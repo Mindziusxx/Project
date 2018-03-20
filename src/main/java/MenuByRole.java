@@ -1,6 +1,15 @@
+import java.util.Scanner;
+
 public class MenuByRole extends ScannerUtils {
 
     public static void menuActions() {
+
+
+//        Scanner sc = new Scanner(System.in);
+//        int input1 = sc.nextInt(2);
+
+
+
 
         switch (scanner1()) {
             case 1:
