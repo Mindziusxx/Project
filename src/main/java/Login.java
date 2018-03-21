@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
 
-public class Login extends ScannerUtils {
+public class Login  {
 
 
     ///Ciklo reikia, kad loginas pasijungtų iš failo...
@@ -29,14 +29,15 @@ public class Login extends ScannerUtils {
 
                 ///Čia reikia susitvarkyti norm. loginą, kad neteisingu atveju gerą print duotų ir teisingu nebeimtu blogo print... Gal IF iF'e - pabandyti.
 
-                if (splited[0].equals(input) && splited[1].equals(input1)) {
+                if (splited[3].equals(input) && splited[2].equals(input1)) {
                     MenuByRole.printMenuForAdmin();
+                    break;
                 } else {
                     ///System.out.println("username arba password yra neteisingas");
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("login" + e);
         }
     }
 }

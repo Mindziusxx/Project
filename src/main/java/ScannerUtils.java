@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class ScannerUtils extends Main {
+public class ScannerUtils {
 
 
     public static String scanner() {
