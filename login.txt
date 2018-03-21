@@ -1,3 +1,1 @@
-id,role,firstName,secondName,password,userName,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-,,,,admin,admin,,,,,,,
-,,,,test,test,,,,,,,
+mindaugas,mindzius

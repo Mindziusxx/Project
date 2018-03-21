@@ -22,20 +22,19 @@ public class Login extends ScannerUtils {
             in = new BufferedReader(new FileReader("login.txt"));
             String read = null;
 
-            while ((read = in.readLine()) != null) {
 
+            while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
 
                 ///Čia reikia susitvarkyti norm. loginą, kad neteisingu atveju gerą print duotų ir teisingu nebeimtu blogo print... Gal IF iF'e - pabandyti.
 
-                if (splited[5].equals(input) && splited[4].equals(input1)) {
+                if (splited[0].equals(input) && splited[1].equals(input1)) {
                     MenuByRole.printMenuForAdmin();
                 } else {
-                    System.out.println("username arba password yra neteisingas");
+                    ///System.out.println("username arba password yra neteisingas");
                 }
             }
-
         } catch (Exception e) {
             System.out.println(e);
         }
