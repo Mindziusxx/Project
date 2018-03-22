@@ -1,11 +1,9 @@
 import java.io.BufferedWriter;
         import java.io.FileWriter;
 
-public class StartProgram   {
-
+public class Start {
 
     ///Čia aprašyti su IF, kad patikrina, jei yra failas su Admin, tai nekuriam naujo, o jei nėra, kuriam... Sukurimas jau yra, reikia check...
-
 
 
     public static void createFile() {

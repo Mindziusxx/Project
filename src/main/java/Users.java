@@ -26,5 +26,8 @@ public class Users  {
         this.gender = gender;
         this.address = address;
         this.runningCourses = runningCourses;
+
+        System.out.println(firstName);
     }
 }
+

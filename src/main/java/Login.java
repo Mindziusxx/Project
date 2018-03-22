@@ -2,22 +2,21 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
 
-public class Login  {
+public class Login {
 
+    public static void  login() {
 
-    ///Ciklo reikia, kad loginas pasijungtų iš failo...
-
-    public static void login() {
-
+        Roles roles = new Roles();
 
         System.out.println("Prašau įveskite username");
-        Scanner sc = new Scanner(System.in);
-        String input = sc.next();
+        String userName = ScannerUtils.scanner();
         System.out.println("Prašau įveskite password");
-        String input1 = sc.next();
+        String password = ScannerUtils.scanner();
 
 
         BufferedReader in = null;
+
+
         try {
             in = new BufferedReader(new FileReader("login.txt"));
             String read = null;
@@ -26,11 +25,11 @@ public class Login  {
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
-
                 ///Čia reikia susitvarkyti norm. loginą, kad neteisingu atveju gerą print duotų ir teisingu nebeimtu blogo print... Gal IF iF'e - pabandyti.
 
-                if (splited[3].equals(input) && splited[2].equals(input1)) {
-                    MenuByRole.printMenuForAdmin();
+                if (splited[3].equals(userName) && splited[2].equals(password)) {
+                    roles.checkRole("admin");
+//                    Menu.printMenuForAdmin();
                     break;
                 } else {
                     ///System.out.println("username arba password yra neteisingas");
@@ -40,4 +39,6 @@ public class Login  {
             System.out.println("login" + e);
         }
     }
+
+
 }

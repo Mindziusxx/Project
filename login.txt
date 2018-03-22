@@ -1,4 +1,2 @@
 firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
 ,,admin,admin
-df,sd,sd,sd
-sd,sd,s,s

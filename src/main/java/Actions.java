@@ -1,14 +1,13 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class ActionByRole{
-
+public class Actions {
 
     public static void menuActionsByAdmin() {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                ActionByRole.registerNewUser();
+                Actions.registerNewUser();
                 ///printMenuForAll();
                 break;
             case 2:
@@ -35,7 +34,7 @@ public class ActionByRole{
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                ActionByRole.registerNewUser();
+                Actions.registerNewUser();
                 break;
             case 2:
                 System.out.println("ats 2");
@@ -61,7 +60,7 @@ public class ActionByRole{
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                ActionByRole.registerNewUser();
+                Actions.registerNewUser();
                 break;
             case 2:
                 System.out.println("ats 2");
@@ -83,12 +82,11 @@ public class ActionByRole{
         }
     }
 
-
     public static void menuActionsToAll() {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                MenuByRole.printMenuForAdmin();
+                Menu.printMenuForAdmin();
                 break;
             case 2:
                 System.out.println("Jūs išėjote iš programos");
