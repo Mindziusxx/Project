@@ -2,7 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Start.createFile();
+//        System.out.println(RoleNew.ADMIN.getroleName());
+
+        ///Start.createFile();
         Login.login();
 
 //        Users users = new Users("Jonas", "secondName", "userName", "role", "personalNumber",
@@ -10,4 +12,6 @@ public class Main {
 
 
     }
+
+
 }

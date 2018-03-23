@@ -1,2 +1,3 @@
 firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
 ,,admin,admin
+test,test,test,test,student

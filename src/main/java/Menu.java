@@ -15,18 +15,20 @@ public class Menu {
     }
 
     public static void printMenuForLecturer() {
-        System.out.println("1. Veiksmas 1");
-        System.out.println("2. Veiksmas 2");
-        System.out.println("3. Veiksmas 3");
+        System.out.println("1. Veiksmas L");
+        System.out.println("2. Veiksmas L");
+        System.out.println("3. Veiksmas L");
         System.out.println("4. Exit");
+        Actions.menuActionsByLecturer();
     }
 
 
     public static void printMenuForStudent() {
-        System.out.println("1. Veiksmas 1");
-        System.out.println("2. Veiksmas 2");
-        System.out.println("3. Veiksmas 3");
+        System.out.println("1. Veiksmas S");
+        System.out.println("2. Veiksmas S");
+        System.out.println("3. Veiksmas S");
         System.out.println("4. Exit");
+        Actions.menuActionsByStudent();
     }
 
 

@@ -8,7 +8,6 @@ public class Actions {
         switch (ScannerUtils.scanner1()) {
             case 1:
                 Actions.registerNewUser();
-                ///printMenuForAll();
                 break;
             case 2:
                 System.out.println("ats 2");
@@ -34,7 +33,7 @@ public class Actions {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                Actions.registerNewUser();
+                System.out.println("ats 1");
                 break;
             case 2:
                 System.out.println("ats 2");
@@ -60,7 +59,7 @@ public class Actions {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                Actions.registerNewUser();
+                System.out.println("ats 1");
                 break;
             case 2:
                 System.out.println("ats 2");
@@ -107,8 +106,10 @@ public class Actions {
             String password = ScannerUtils.scanner();
             System.out.println("Įveskite userName:");
             String userName = ScannerUtils.scanner();
+            System.out.println("Įveskite ROLE:");
+            String role = ScannerUtils.scanner();
             bufferedWriter.newLine();
-            bufferedWriter.write(firstName + "," + secondName + "," + password + "," + userName);
+            bufferedWriter.write(firstName + "," + secondName + "," + password + "," + userName + "," + role);
             System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
         } catch (Exception e) {
             System.out.println("registerNewUser" + e);

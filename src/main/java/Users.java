@@ -27,7 +27,6 @@ public class Users  {
         this.address = address;
         this.runningCourses = runningCourses;
 
-        System.out.println(firstName);
     }
 }
 

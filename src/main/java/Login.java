@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Login {
 
-    public static void  login() {
+    public static void login() {
 
-        Roles roles = new Roles();
+        ///Roles roles = new Roles();
 
         System.out.println("Prašau įveskite username");
         String userName = ScannerUtils.scanner();
@@ -22,16 +22,26 @@ public class Login {
             String read = null;
 
 
+            ///Čia reikės taisyti, nes negerai user ieško...
+
+
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
-                ///Čia reikia susitvarkyti norm. loginą, kad neteisingu atveju gerą print duotų ir teisingu nebeimtu blogo print... Gal IF iF'e - pabandyti.
-
                 if (splited[3].equals(userName) && splited[2].equals(password)) {
-                    roles.checkRole("admin");
-//                    Menu.printMenuForAdmin();
+                    if (userName.equals(RoleNew.ADMIN.getroleName())) {
+                        Menu.printMenuForAdmin();
+                    }
+                    if (userName.equals(RoleNew.LECTURER.getroleName())) {
+                        Menu.printMenuForLecturer();
+                    }
+                    if (userName.equals(RoleNew.STUDENT.getroleName())) {
+                        Menu.printMenuForStudent();
+                    }
                     break;
-                } else {
+                }
+
+                else {
                     ///System.out.println("username arba password yra neteisingas");
                 }
             }
@@ -39,6 +49,4 @@ public class Login {
             System.out.println("login" + e);
         }
     }
-
-
 }
