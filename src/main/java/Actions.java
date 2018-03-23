@@ -1,5 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.UUID;
 
 public class Actions {
 
@@ -106,11 +107,13 @@ public class Actions {
             String password = ScannerUtils.scanner();
             System.out.println("Įveskite userName:");
             String userName = ScannerUtils.scanner();
+
             System.out.println("Įveskite ROLE:");
             String role = ScannerUtils.scanner();
             bufferedWriter.newLine();
-            bufferedWriter.write(firstName + "," + secondName + "," + password + "," + userName + "," + role);
+            bufferedWriter.write(UUID.randomUUID().toString()+ "," + firstName + "," + secondName + "," + password + "," + userName + "," + role);
             System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
+
         } catch (Exception e) {
             System.out.println("registerNewUser" + e);
         }

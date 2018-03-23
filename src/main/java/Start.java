@@ -1,9 +1,23 @@
-import java.io.BufferedWriter;
-        import java.io.FileWriter;
+import java.io.*;
+import java.util.UUID;
 
 public class Start {
 
-    ///Čia aprašyti su IF, kad patikrina, jei yra failas su Admin, tai nekuriam naujo, o jei nėra, kuriam... Sukurimas jau yra, reikia check...
+    public static void startProgram() {
+
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader("login.txt"));
+            String read = null;
+
+            if ((read = in.readLine()) == null) {
+                createFile();
+            } else {
+            }
+        } catch (Exception e) {
+            System.out.println("login" + e);
+        }
+    }
 
 
     public static void createFile() {
@@ -11,9 +25,9 @@ public class Start {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("login.txt"))
         ) {
 
-            bufferedWriter.write("firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+            bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
             bufferedWriter.newLine();
-            bufferedWriter.write(",,admin,admin");
+            bufferedWriter.write(UUID.randomUUID().toString() + ",,,admin,admin,admin");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);

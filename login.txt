@@ -1,3 +1,4 @@
-firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-,,admin,admin
-test,test,test,test,student
+ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+68afaabd-df85-4fd8-bcbd-91d8d514fe69,,,admin,admin,admin
+d9e6f552-2815-4ac2-83c7-221b2b296de6,ksfj,dfjkdf,ag,ag,student
+6df73576-6479-4973-9bba-b754ef615b3e,kdj,dfldgj,a,a,lecturer
