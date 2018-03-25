@@ -1,5 +1,6 @@
 public class Menu {
 
+
     public static void printMenuForAdmin() {
 
         System.out.println("Pasirinkite norimą punktą: \n");
@@ -23,12 +24,11 @@ public class Menu {
     }
 
 
-    public static void printMenuForStudent() {
-        System.out.println("1. Veiksmas S");
-        System.out.println("2. Veiksmas S");
-        System.out.println("3. Veiksmas S");
+    public static void printMenuForStudent(String user) {
+        System.out.println("1. Pažiūrėti savo info");
+        System.out.println("2. Keisti savo info");
         System.out.println("4. Exit");
-        Actions.menuActionsByStudent();
+        Actions.menuActionsByStudent(user);
     }
 
 

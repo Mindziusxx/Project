@@ -29,7 +29,7 @@ public class Login {
                         Menu.printMenuForLecturer();
                     }
                     if (splited[5].equals(RoleNew.STUDENT.getroleName())) {
-                        Menu.printMenuForStudent();
+                        Menu.printMenuForStudent(userName);
                     }
                     break;
                 } else {
@@ -40,5 +40,9 @@ public class Login {
             System.out.println("login" + e);
         }
     }
+
+
+
+
 }
 
