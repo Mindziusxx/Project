@@ -1,3 +1,7 @@
 ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-3a3dd026-86d2-4321-bb6f-46a36f5145e8,,,admin,admin,admin
-46a79fb9-e529-4e1c-9fa2-ceb6d42e7639,a,a,a,a,student
+1,admin,admin,admin,admin,admin
+2,Mindaugas,Simulionis,aaa,studentasvienas,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+3,Jonas,Petraitis,aaa,studentasdu,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+4,Petras,Jonaitis,aaa,lektorius,lecturer,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+7fa4d184-70df-4a3b-a0e8-2fb319bfe1c6,jonas,asas,aaa,studentas,student
+0a243e4a-7ec3-4b3e-b981-0d51af60c44d,jonukas,Gritute,aaa,studente,student

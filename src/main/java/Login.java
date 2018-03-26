@@ -5,11 +5,12 @@ public class Login {
 
     public static void login() {
 
+        Users users = new Users();
 
         System.out.println("Prašau įveskite username");
-        String userName = ScannerUtils.scanner();
+        users.setUserName(ScannerUtils.scanner());
         System.out.println("Prašau įveskite password");
-        String password = ScannerUtils.scanner();
+        users.setPassword(ScannerUtils.scanner());
 
         BufferedReader in = null;
 
@@ -20,7 +21,7 @@ public class Login {
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
-                if (splited[4].equals(userName) && splited[3].equals(password)) {
+                if (splited[4].equals(users.getUserName()) && splited[3].equals(users.getPassword())) {
 
                     if (splited[5].equals(RoleNew.ADMIN.getroleName())) {
                         Menu.printMenuForAdmin();
@@ -29,7 +30,7 @@ public class Login {
                         Menu.printMenuForLecturer();
                     }
                     if (splited[5].equals(RoleNew.STUDENT.getroleName())) {
-                        Menu.printMenuForStudent(userName);
+                        Menu.printMenuForStudent(users.getUserName());
                     }
                     break;
                 } else {
@@ -40,9 +41,5 @@ public class Login {
             System.out.println("login" + e);
         }
     }
-
-
-
-
 }
 

@@ -1,0 +1,4 @@
+firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+5dd05e2b-1e19-4c1d-8b61-65723561ccdd,vienas,admin,admin,admin,null
+5dd05e2b-1e19-4c1d-8b61-65723561ccdd,du,admin,adsdmin,admddin,null
+5dd05e2b-1e19-4c1d-8b61-65723561ccdd,admin,admin,admsdin,admin,null

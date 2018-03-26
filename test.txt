@@ -1,0 +1,2 @@
+ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+859d3f36-da6a-4dd9-bf7f-7a7f086b7acb,Jonas,Jonaitis
