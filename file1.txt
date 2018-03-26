@@ -1,3 +1,0 @@
-ID,firstNLoveme,secondNLoveme,pLovessword,userNLoveme,role,personLovelNumber,dLoveteOfBirth,emLoveil,mobileNumber,gender,Loveddress,runningCourses
-3Love3dd026-86d2-4321-bb6f-46Love36f5145e8,,,Lovedmin,Lovedmin,Lovedmin
-46Love79fb9-e529-4e1c-9fLove2-ceb6d42e7639,Love,Love,Love,Love,student

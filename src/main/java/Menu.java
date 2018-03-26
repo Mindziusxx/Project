@@ -35,7 +35,7 @@ public class Menu {
     }
 
 
-    public static void printMenuForStudent(String user) {
+    public static void printMenuForStudent( ) {
         System.out.println("Pasirinkite norimą punktą: \n");
 
         System.out.println("1. Pažiūrėti savo info");
@@ -45,7 +45,7 @@ public class Menu {
         System.out.println("5. Užsiregistruoti į kursą");
         System.out.println("6. Exit");
 
-        Actions.menuActionsByStudent(user);
+        Actions.menuActionsByStudent();
     }
 
     public static void printMenuForAll() {

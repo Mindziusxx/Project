@@ -27,15 +27,16 @@ public class Start {
         users.setSecondName("admin");
         users.setPassword("admin");
         users.setUserName("admin");
-        RoleNew.ADMIN.getroleName();
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("login.txt"))
         ) {
 
-            bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+            bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber," +
+                    "dateOfBirth,email,mobileNumber,gender,address,runningCourses");
             bufferedWriter.newLine();
 
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + RoleNew.ADMIN.getroleName());
+            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
+                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + "admin" + "," + "personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);

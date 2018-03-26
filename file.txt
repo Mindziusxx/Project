@@ -1,3 +1,0 @@
-ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,Love
-3a3dd026-86d2-4321-bb6f-46a36f5145e8,,,admin,admin,admin
-46a79fb9-e529-4e1c-9fa2-ceb6d42e7639,a,a,a,a,student

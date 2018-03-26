@@ -3,43 +3,73 @@ import java.io.FileReader;
 
 public class Login {
 
+    private static  Users currentUser;
+
     public static void login() {
 
-        Users users = new Users();
+        currentUser = new Users();
 
         System.out.println("Prašau įveskite username");
-        users.setUserName(ScannerUtils.scanner());
+        currentUser.setUserName(ScannerUtils.scanner());
         System.out.println("Prašau įveskite password");
-        users.setPassword(ScannerUtils.scanner());
+        currentUser.setPassword(ScannerUtils.scanner());
 
-        BufferedReader in = null;
-
-        try {
-            in = new BufferedReader(new FileReader("login.txt"));
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("login.txt"))
+        ) {
             String read = null;
 
+
+
             while ((read = in.readLine()) != null) {
+
+                try {
+
                 String[] splited = read.split(",");
 
-                if (splited[4].equals(users.getUserName()) && splited[3].equals(users.getPassword())) {
+                if (splited[4].equals(currentUser.getUserName())) {
 
-                    if (splited[5].equals(RoleNew.ADMIN.getroleName())) {
-                        Menu.printMenuForAdmin();
+                    if (splited[3].equals(currentUser.getPassword())) {
+                        System.out.println(currentUser.getRole());
+
+                        currentUser.setFirstName(splited[1]);
+                        currentUser.setSecondName(splited[2]);
+                        currentUser.setRole(splited[5]);
+                        currentUser.setPersonalNumber(splited[6]);
+                        currentUser.setDateOfBirth(splited[7]);
+                        currentUser.setEmail(splited[8]);
+                        currentUser.setMobileNumber(splited[9]);
+                        currentUser.setGender(splited[10]);
+                        currentUser.setAddress(splited[11]);
+                        currentUser.setRunningCourses(splited[12]);
+
+                        if (currentUser.getRole().equals(RoleNew.ADMIN.getroleName())) {
+                            Menu.printMenuForAdmin();
+                        }
+                        if (currentUser.getRole().equals(RoleNew.LECTURER.getroleName())) {
+                            Menu.printMenuForLecturer();
+                        }
+                        if (currentUser.getRole().equals(RoleNew.STUDENT.getroleName())) {
+                            Menu.printMenuForStudent();
+                        }
+
+                        break;
+                    } else {
                     }
-                    if (splited[5].equals(RoleNew.LECTURER.getroleName())) {
-                        Menu.printMenuForLecturer();
-                    }
-                    if (splited[5].equals(RoleNew.STUDENT.getroleName())) {
-                        Menu.printMenuForStudent(users.getUserName());
-                    }
-                    break;
-                } else {
                 }
             }
-            in.close();
+            catch (Exception e) {
+                }
+            }
+
+
         } catch (Exception e) {
             System.out.println("login" + e);
         }
+    }
+
+    public static Users getCurrentUser(){
+        return currentUser;
     }
 }
 

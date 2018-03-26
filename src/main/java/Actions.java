@@ -1,6 +1,8 @@
-import javax.jws.soap.SOAPBinding;
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Actions {
 
@@ -11,6 +13,7 @@ public class Actions {
                 Actions.registerNewUser();
                 break;
             case 2:
+                changeUserInfo();
                 System.out.println("ats 2");
                 break;
             case 3:
@@ -37,7 +40,7 @@ public class Actions {
                 System.out.println("ats 1");
                 break;
             case 2:
-                System.out.println("ats 2");
+                changeUserInfo();
                 break;
             case 3:
                 System.out.println("ats 3");
@@ -56,15 +59,14 @@ public class Actions {
         }
     }
 
-    public static void menuActionsByStudent(String user) {
+    public static void menuActionsByStudent( ) {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                userinfo(user);
+                userInfo();
                 break;
             case 2:
-//                change(user);
-//                changeInfo(user);
+                changeUserInfo();
                 break;
             case 3:
                 System.out.println("ats 3");
@@ -117,7 +119,11 @@ public class Actions {
             String role = ScannerUtils.scanner();
 
             bufferedWriter.newLine();
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + role);
+
+            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName()
+                    + "," + users.getPassword() + "," + users.getUserName() + "," + role + ","+
+                    "personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+
             System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
 
         } catch (Exception e) {
@@ -126,7 +132,7 @@ public class Actions {
     }
 
 
-    public static void userinfo(String user) {
+    public static void userInfo() {
 
         System.out.println("Jūsų duomenys: \n");
 
@@ -139,7 +145,7 @@ public class Actions {
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
-                if ((user.equals(splited[4]))) {
+                if (Login.getCurrentUser().getUserName().equals(splited[4])) {
                     for (int i = 0; i < splited.length; i++) {
                         System.out.println(splited[i]);
                     }
@@ -154,81 +160,37 @@ public class Actions {
     }
 
 
-    ///KEIČIA VISKĄ VIETOJ USER PADUOTOS REIKŠMĖS - NEGERAI, NES REIKIA TIK PAKEISTI ŠIO USERIO INFO, O ČIA JEI SUTAPS VISKĄ KEIČIA...
-//    public static void changeNew1(String user) {
-//        Users users = new Users();
-//
-//        try
-//        {
-//            File file = new File("login.txt");
-//
-//            BufferedReader reader = new BufferedReader(new FileReader(file));
-//
-//            String line = "", oldtext = "";
-//
-//            while ((line = reader.readLine()) != null) {
-//
-//                String[] splited = line.split(",");
-//
-//                for (int i = 0; i < splited.length ; i++) {
-//                    if (user.equals(splited[4]));
-//                }
-//            }
-//
-//            {
-//                oldtext += line + "\r\n";
-//            }
-//            reader.close();
-//            // replace a word in a file
-//
-//            String newtext = oldtext.replace(user, "Love");
-//
-//            //To replace a line in a file
-//            //String newtext = oldtext.replaceAll("This is test string 20000", "blah blah blah");
-//
-//            FileWriter writer = new FileWriter("file15.txt");
-//            writer.write(newtext);writer.close();
-//        }
-//        catch (IOException ioe)
-//        {
-//            ioe.printStackTrace();
-//        }
-//    }
+    public static void changeUserInfo() {
 
-//
-//    public static void changeNew(String user) {
-//
-//        Users users = new Users();
-//
-//        BufferedReader in = null;
-//
-//        try {
-//            in = new BufferedReader(new FileReader("login.txt"));
-//            String read = null;
-//
-//            String line = "", oldtext = "";
-//
-//            while ((read = in.readLine()) != null) {
-//
-//                oldtext += line + "\r\n";
-//
-//
-//                users.setUserName(user);
-//
-//                String newtext = oldtext.replace(users.getUserName(), "bandomasis");
-//
-//                FileWriter writer = new FileWriter("login1.txt");
-//                writer.write(newtext);
-//                writer.close();
-//
-//                {
-//                }
-//            }
-//            in.close();
-//        } catch (Exception e) {
-//            System.out.println("login" + e);
-//        }
-//    }
+        File usersFile = new File("login.txt");
+        File tmpFile = new File("tmp.txt");
+        try (
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile))
+        ) {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+
+                if (line.split(",")[4].equals(Login.getCurrentUser().getUserName())) {
+
+                    System.out.println("Įveskite naują userName");
+
+                    List<String> splited = Arrays.asList(line.split(","));
+                    String name = ScannerUtils.scanner();
+                    splited.set(4, name);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setFirstName(name);
+
+                }
+                bufferedWriter.write(line);
+
+                bufferedWriter.newLine();
+            }
+            usersFile.delete();
+            tmpFile.renameTo(new File("login.txt"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
-
-
