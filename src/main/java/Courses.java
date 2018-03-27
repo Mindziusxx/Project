@@ -8,7 +8,7 @@ public class Courses {
     private int credit;
     private int lecturerId;
 
-    public Courses () {
+    public Courses() {
         this.code = code;
         this.tittle = tittle;
         this.desciption = desciption;
@@ -64,4 +64,11 @@ public class Courses {
     public void setLecturerId(int lecturerId) {
         this.lecturerId = lecturerId;
     }
+
+    
+
+
+
+
+
 }

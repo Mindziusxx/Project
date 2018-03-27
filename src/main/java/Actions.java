@@ -13,20 +13,22 @@ public class Actions {
                 Actions.registerNewUser();
                 break;
             case 2:
-                changeUserInfo();
-                System.out.println("ats 2");
+                System.out.println("Pridėti kursą");
                 break;
             case 3:
-                System.out.println("ats 3");
+                System.out.println("Ištrinti kursą");
                 break;
             case 4:
-                System.out.println("ats 4");
+                System.out.println("Pakeisti kursą");
                 break;
             case 5:
-                System.out.println("ats 5");
+                System.out.println("Visų studentų sąrašas");
                 break;
             case 6:
-                System.out.println("ats 6");
+                System.out.println("Visų kursų sąrašas");
+                break;
+            case 7:
+                System.out.println("Exit");
                 break;
             default:
                 break;
@@ -37,22 +39,28 @@ public class Actions {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
-                System.out.println("ats 1");
+                userInfo();
                 break;
             case 2:
                 changeUserInfo();
                 break;
             case 3:
-                System.out.println("ats 3");
+                System.out.println("Pridėti kursą");
                 break;
             case 4:
-                System.out.println("ats 4");
+                System.out.println("Ištrinti kursą");
                 break;
             case 5:
-                System.out.println("ats 5");
+                System.out.println("Pakeisti kursą");
                 break;
             case 6:
-                System.out.println("ats 6");
+                System.out.println("Priskirti kursai: ");
+                break;
+            case 7:
+                System.out.println("Studentai užsiregisntravę į kursus");
+                break;
+            case 8:
+                System.out.println("Exit");
                 break;
             default:
                 break;
@@ -69,27 +77,48 @@ public class Actions {
                 changeUserInfo();
                 break;
             case 3:
-                System.out.println("ats 3");
+                System.out.println("Visų kursų sąrašas");
                 break;
             case 4:
-                System.out.println("ats 4");
+                System.out.println("Užsiregistruotų kursų sąrašas");
                 break;
             case 5:
-                System.out.println("ats 5");
+                System.out.println("Užsiregistruoti į kursą");
                 break;
             case 6:
-                System.out.println("ats 6");
+                System.out.println("Exit");
                 break;
             default:
                 break;
         }
     }
 
-    public static void menuActionsToAll() {
-
+    public static void menuActionsToAdmin() {
         switch (ScannerUtils.scanner1()) {
             case 1:
-                System.out.println("Aprašyti visų Rolių nukreipimą į jų MENU");
+                Menu.printMenuForAdmin();
+                break;
+            case 2:
+                System.out.println("Jūs išėjote iš programos");
+                break;
+        }
+    }
+
+    public static void menuActionsToStudent() {
+        switch (ScannerUtils.scanner1()) {
+            case 1:
+                Menu.printMenuForStudent();
+                break;
+            case 2:
+                System.out.println("Jūs išėjote iš programos");
+                break;
+        }
+    }
+
+    public static void menuActionsToLecturer() {
+        switch (ScannerUtils.scanner1()) {
+            case 1:
+                Menu.printMenuForLecturer();
                 break;
             case 2:
                 System.out.println("Jūs išėjote iš programos");
@@ -125,6 +154,7 @@ public class Actions {
                     "personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
 
             System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
+            Menu.otherMenu();
 
         } catch (Exception e) {
             System.out.println("registerNewUser" + e);
@@ -154,6 +184,7 @@ public class Actions {
                 }
             }
             in.close();
+            Menu.otherMenu();
         } catch (Exception e) {
             System.out.println("login" + e);
         }
@@ -168,29 +199,84 @@ public class Actions {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile))
         ) {
-
             String line;
             while ((line = bufferedReader.readLine()) != null) {
 
                 if (line.split(",")[4].equals(Login.getCurrentUser().getUserName())) {
 
                     System.out.println("Įveskite naują userName");
-
                     List<String> splited = Arrays.asList(line.split(","));
-                    String name = ScannerUtils.scanner();
-                    splited.set(4, name);
+                    String uname = ScannerUtils.scanner();
+                    splited.set(4, uname);
                     line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setFirstName(name);
+                    Login.getCurrentUser().setUserName(uname);
 
+                    System.out.println("Įveskite naują firstName");
+                    String fname = ScannerUtils.scanner();
+                    splited.set(1, fname);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setFirstName(fname);
+
+                    System.out.println("Įveskite naują lastName");
+                    String lname = ScannerUtils.scanner();
+                    splited.set(2, lname);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setLastName(lname);
+
+                    System.out.println("Įveskite naują personalNumber");
+                    String pname = ScannerUtils.scanner();
+                    splited.set(6, pname);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setPersonalNumber(pname);
+
+                    System.out.println("Įveskite naują dateOfBirth");
+                    String dob = ScannerUtils.scanner();
+                    splited.set(7, dob);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setDateOfBirth(dob);
+
+                    System.out.println("Įveskite naują email");
+                    String email = ScannerUtils.scanner();
+                    splited.set(8, email);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setEmail(email);
+
+                    System.out.println("Įveskite naują mobileNumber");
+                    String mNumber = ScannerUtils.scanner();
+                    splited.set(9, mNumber);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setMobileNumber(mNumber);
+
+                    System.out.println("Įveskite naują gender");
+                    String genter = ScannerUtils.scanner();
+                    splited.set(10, genter);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setGender(genter);
+
+                    System.out.println("Įveskite naują address");
+                    String address = ScannerUtils.scanner();
+                    splited.set(11, address);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setAddress(address);
+
+                    System.out.println("Įveskite naują runningCourses");
+                    String rCourses = ScannerUtils.scanner();
+                    splited.set(12, rCourses);
+                    line = splited.stream().collect(Collectors.joining(","));
+                    Login.getCurrentUser().setRunningCourses(rCourses);
+
+
+                    System.out.println(Login.getCurrentUser().getUserName());
                 }
                 bufferedWriter.write(line);
-
                 bufferedWriter.newLine();
             }
             usersFile.delete();
             tmpFile.renameTo(new File("login.txt"));
+            Menu.otherMenu();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
+
 }

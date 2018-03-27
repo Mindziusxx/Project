@@ -36,7 +36,8 @@ public class Start {
             bufferedWriter.newLine();
 
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
-                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + "admin" + "," + "personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," +
+                    "admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);

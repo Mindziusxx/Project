@@ -1,4 +1,3 @@
 ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-d6abd5fc-031c-4d65-b542-777259d10569,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-1ead632f-2548-4a87-9e80-34b1177bee6a,kdfjk,sfjdfj,sfjfj,sjfj,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-03e8bd1c-5a1b-4213-89ad-d11294e522ae,Minde,Minde,aaa,Minde,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+ccb38b23-0537-4594-ac5b-d479ec3122ee,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+8be13532-e460-423a-8569-d49ba91551fc,minde,minde,minde,minde,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses

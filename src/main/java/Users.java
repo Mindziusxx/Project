@@ -4,6 +4,7 @@ public class Users {
     private int ID;
     private String password;
     private String firstName;
+    private String lastName;
     private String secondName;
     private String userName;
     private String role;
@@ -141,5 +142,8 @@ public class Users {
         this.runningCourses = runningCourses;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
 

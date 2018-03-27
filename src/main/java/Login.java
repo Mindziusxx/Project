@@ -9,17 +9,19 @@ public class Login {
 
         currentUser = new Users();
 
-        System.out.println("Prašau įveskite username");
-        currentUser.setUserName(ScannerUtils.scanner());
-        System.out.println("Prašau įveskite password");
-        currentUser.setPassword(ScannerUtils.scanner());
+
+       while (true) {
+           System.out.println("Prašau įveskite username");
+           currentUser.setUserName(ScannerUtils.scanner());
+           System.out.println("Prašau įveskite password");
+           currentUser.setPassword(ScannerUtils.scanner());
+
+
 
         try (
                 BufferedReader in = new BufferedReader(new FileReader("login.txt"))
         ) {
             String read = null;
-
-
 
             while ((read = in.readLine()) != null) {
 
@@ -30,7 +32,6 @@ public class Login {
                 if (splited[4].equals(currentUser.getUserName())) {
 
                     if (splited[3].equals(currentUser.getPassword())) {
-                        System.out.println(currentUser.getRole());
 
                         currentUser.setFirstName(splited[1]);
                         currentUser.setSecondName(splited[2]);
@@ -52,7 +53,6 @@ public class Login {
                         if (currentUser.getRole().equals(RoleNew.STUDENT.getroleName())) {
                             Menu.printMenuForStudent();
                         }
-
                         break;
                     } else {
                     }
@@ -61,15 +61,12 @@ public class Login {
             catch (Exception e) {
                 }
             }
-
-
         } catch (Exception e) {
             System.out.println("login" + e);
         }
     }
-
+    }
     public static Users getCurrentUser(){
         return currentUser;
     }
 }
-
