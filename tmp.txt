@@ -1,3 +1,0 @@
-ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-ccb38b23-0537-4594-ac5b-d479ec3122ee,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-8be13532-e460-423a-8569-d49ba91551fc,asas,asas,minde,asas,student,asas,asas,asas,asas,asas,asas,asas

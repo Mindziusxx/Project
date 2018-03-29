@@ -132,4 +132,21 @@ public class Courses {
         }
         return null;
     }
+
+
+
+    public static void searchCourse() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("course.txt"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+                System.out.println(splited[3]);
+            }
+        } catch (Exception e) {
+        }
+    }
+
 }

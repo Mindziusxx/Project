@@ -24,10 +24,10 @@ public class Actions {
                 System.out.println("Pakeisti kursą");
                 break;
             case 5:
-                System.out.println("Visų studentų sąrašas");
+                Users.searchUser();
                 break;
             case 6:
-                System.out.println("Visų kursų sąrašas");
+                Courses.searchCourse();
                 break;
             case 7:
                 System.out.println("Exit");

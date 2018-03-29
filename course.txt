@@ -1,2 +1,0 @@
-lecturerId, userName,code,tittle,desciption,startDate,credit
-8be13532-e460-423a-8569-d49ba91551fc,aaa,te,null,321,258

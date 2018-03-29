@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class Users {
 
 
@@ -144,6 +147,21 @@ public class Users {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+
+    public static void searchUser() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("login.txt"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+                System.out.println(splited[4]);
+            }
+        } catch (Exception e) {
+        }
     }
 }
 
