@@ -1,4 +1,13 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.UUID;
+
+
 public class Courses {
+
+    ///private static  Users currentUser;
 
 
     private String code;
@@ -41,12 +50,14 @@ public class Courses {
         return lecturerId;
     }
 
-    public void setCode(String code) {
+    public String setCode(String code) {
         this.code = code;
+        return code;
     }
 
-    public void setTittle(String tittle) {
+    public String setTittle(String tittle) {
         this.tittle = tittle;
+        return tittle;
     }
 
     public void setDesciption(String desciption) {
@@ -65,10 +76,60 @@ public class Courses {
         this.lecturerId = lecturerId;
     }
 
-    
+    public static void createCourse() {
+
+        Courses courses = new Courses();
+
+        ///currentUser = new Users();
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("course.txt"))
+        ) {
+
+            bufferedWriter.write("lecturerId, userName,code,tittle,desciption,startDate,credit");
+            bufferedWriter.newLine();
 
 
+            System.out.println("Prašau įveskite tittle");
+            courses.setTittle(ScannerUtils.scanner());
+
+            System.out.println("Prašau įveskite desciption");
+            courses.setDesciption(ScannerUtils.scanner());
+
+            System.out.println("Prašau įveskite startDate");
+            courses.setStartDate(ScannerUtils.scanner1());
+
+            System.out.println("Prašau įveskite credit");
+            courses.setCredit(ScannerUtils.scanner1());
 
 
+            bufferedWriter.write(returnID() + "," + Login.getCurrentUser().getUserName()
+                    +  "," + courses.getTittle() + "," + courses.getDesciption() + "," + courses.getStartDate() + "," + courses.getCredit());
 
+        } catch (Exception e) {
+            System.out.println("createCourse" + e);
+        }
+    }
+
+
+    public static String returnID() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("login.txt"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+
+                if (splited[1].equals(Login.getCurrentUser().getUserName())) {
+                    {
+                        return splited[0];
+                    }
+                } else {
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("login" + e);
+        }
+        return null;
+    }
 }

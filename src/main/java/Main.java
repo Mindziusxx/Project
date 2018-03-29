@@ -4,8 +4,7 @@ public class Main {
 
         Start.startProgram();
         Login.login();
-
-        ///Login.getCurrentUser().getRole();
-
+//        test.login2();
+//        Courses.returnID();
     }
 }

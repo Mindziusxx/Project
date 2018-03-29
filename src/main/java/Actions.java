@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
+
 public class Actions {
 
     public static void menuActionsByAdmin() {
@@ -37,6 +39,7 @@ public class Actions {
 
     public static void menuActionsByLecturer() {
 
+
         switch (ScannerUtils.scanner1()) {
             case 1:
                 userInfo();
@@ -45,7 +48,7 @@ public class Actions {
                 changeUserInfo();
                 break;
             case 3:
-                System.out.println("Pridėti kursą");
+                Courses.createCourse();
                 break;
             case 4:
                 System.out.println("Ištrinti kursą");
