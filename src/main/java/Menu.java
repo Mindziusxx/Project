@@ -1,6 +1,5 @@
 public class Menu {
 
-
     public static void printMenuForAdmin() {
 
         System.out.println("Pasirinkite norimą punktą: \n");
@@ -67,7 +66,6 @@ public class Menu {
         System.out.println("2. Išeiti iš programos");
         Actions.menuActionsToLecturer();
     }
-
 
     public static void otherMenu() {
 

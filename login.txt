@@ -1,4 +1,0 @@
-ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-262971c5-2ef8-4d57-b90b-de3cc9eb9537,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-eaadfb19-d1a8-402c-8a13-76f6d7dec792,jonas,petraitis,aaa,jonas,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-4a17c983-e042-4b18-b094-fbfb4e2871e1,Mindaugas,Simulionis,aaa,minde,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses

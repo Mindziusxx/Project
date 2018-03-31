@@ -7,9 +7,8 @@ public class Start {
 
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("login.txt"));
+            in = new BufferedReader(new FileReader("users.csv"));
             String read = null;
-
             if ((read = in.readLine()) == null) {
                 createFile();
             } else {
@@ -18,6 +17,22 @@ public class Start {
             System.out.println("login" + e);
         }
     }
+
+    public static void startProgram1() {
+
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader("course list.csv"));
+            String read = null;
+            if ((read = in.readLine()) == null) {
+                createFile1();
+            } else {
+            }
+        } catch (Exception e) {
+            System.out.println("login" + e);
+        }
+    }
+
 
     public static void createFile() {
 
@@ -28,7 +43,7 @@ public class Start {
         users.setPassword("admin");
         users.setUserName("admin");
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("login.txt"))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("users.csv"))
         ) {
 
             bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber," +
@@ -38,6 +53,18 @@ public class Start {
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
                     users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," +
                     "admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+
+        } catch (Exception e) {
+            System.out.println("createFile" + e);
+        }
+    }
+
+    public static void createFile1() {
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("course list.csv"))
+        ) {
+
+            bufferedWriter.write("code,lecturerId, userName,tittle,desciption,startDate,credit");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);

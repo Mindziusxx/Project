@@ -9,17 +9,14 @@ public class Login {
 
         currentUser = new Users();
 
-
        while (true) {
            System.out.println("Prašau įveskite username");
            currentUser.setUserName(ScannerUtils.scanner());
            System.out.println("Prašau įveskite password");
            currentUser.setPassword(ScannerUtils.scanner());
 
-
-
         try (
-                BufferedReader in = new BufferedReader(new FileReader("login.txt"))
+                BufferedReader in = new BufferedReader(new FileReader("users.csv"))
         ) {
             String read = null;
 
