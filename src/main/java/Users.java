@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Users {
 
-    private int ID;
+    private String ID;
     private String password;
     private String firstName;
     private String lastName;
@@ -40,7 +40,7 @@ public class Users {
         this.runningCourses = runningCourses;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
@@ -92,7 +92,7 @@ public class Users {
         return runningCourses;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

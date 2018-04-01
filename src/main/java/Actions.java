@@ -59,6 +59,7 @@ public class Actions {
                 break;
             case 7:
                 System.out.println("Studentai užsiregisntravę į kursus");
+                Courses.searchAllStudentInCourses();
                 break;
             case 8:
                 System.out.println("Jūs išėjote iš programos");
@@ -82,10 +83,11 @@ public class Actions {
                 Courses.searchCourseByStudent();
                 break;
             case 4:
-                System.out.println("Užsiregistruotų kursų sąrašas");
+                Courses.searchStudentCourses();
                 break;
             case 5:
                 System.out.println("Užsiregistruoti į kursą");
+                Courses.userRegistrationInCourse();
                 break;
             case 6:
                 System.out.println("Jūs išėjote iš programos");

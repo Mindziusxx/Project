@@ -1,2 +1,7 @@
 ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-b1ba6699-d8c6-4a64-8cad-1393b1cbdb69,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+779d45d3-09fd-469b-a10f-e2c04e41e588,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+8cf822db-6001-44be-ba57-588ca85c5315,aaaaaaaaaaa,aaaaaaaaa,a,studentas11,student,aaaaaaaaaa,aaaaaaaaa,aaaaaaaa,aaaaaaaaa,aaaaaaaa,aaaaaaaa,aaaaaaaa
+56f36a6d-9917-45e3-ae22-e90b41d8d641,Laura,Šimulionienė,a,studentas2,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+54c55141-e5df-4b4c-976f-a4246184db7e,Mėta,Šimulionytė,a,studentas3,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+92a528e8-f8ca-4705-b2c1-3140e5941849,Janina,Burbaitė,a,lektorius11,lecturer,septyni,lalai,nera,neturiu,moteris,Vilnius,nulis
+3d690e73-a6b5-4e22-8543-d53ff7fb862d,Petras,Jonaitis,a,lektorius2,lecturer,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses

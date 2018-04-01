@@ -288,27 +288,35 @@ public class Courses {
     }
 
 
-    public static void userRegistrationInCourse() {     /// REIKIA PADARYTI!!!
+    public static void userRegistrationInCourse() {
+        /// REIKIA PADARYTI!!!
+        Courses courses = new Courses();
 
-        Users users = new Users();
-
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersInCourse.csv", true))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("student in course.csv", true))
         ) {
+//
+            System.out.println("Kur nori regintis? Įvesk TITTLE:");
+            courses.setTittle(ScannerUtils.scanner());
+
+            System.out.println("Pas kokį destitoją?");
+            String UserName = ScannerUtils.scanner();
 
 
-            System.out.println("reikia, kad listas išsikviestų visų course esamų");
-
-            System.out.println("Galima įvesti kurso ID ar tittle ir tada sukurtų lentą (failą) su USER, TITTLE (ar ID) ir LECTURER ID");
-
+            String a = returnStudentId(Login.getCurrentUser().getUserName());
+            String b = returnLecturerId(UserName);
+            String c = courses.getTittle();
 
             bufferedWriter.newLine();
 
-            bufferedWriter.write(
+            bufferedWriter.write("ID,lecturerId,tittle");
 
 
-                    "NAUJAS FAILAS"
-            );
+           /// bufferedWriter.write(a+","+b+","+c);
 
+            ///bufferedWriter.write(returnStudentId(Login.getCurrentUser().getUserName()) + ","+ returnLecturerId(UserName) + "," +
+                   /// courses.getTittle());
+
+            System.out.println("Prisireginai!");
             Menu.otherMenu();
 
         } catch (Exception e) {
@@ -316,10 +324,42 @@ public class Courses {
         }
     }
 
+    public static void searchStudentCourses() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("student in course.csv"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+
+                if (splited[0].equals(Login.getCurrentUser().getID())) {
+
+                    System.out.println(splited[2]);
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    public static void searchAllStudentInCourses() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("student n course.csv"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+
+                if (returnLecturerId(Login.getCurrentUser().getUserName()).equals(splited[1]))
+                    System.out.println(splited[0] + splited[2]);
+            }
+        } catch (Exception e) {
+        }
+    }
 
 
-
-    public static String returnLecturerId(String userName) {
+    public static String returnLecturerId (String userName) {
         Courses courses = new Courses();
 
         try (
@@ -340,4 +380,22 @@ public class Courses {
         return courses.getLecturerId();
     }
 
+    public static String returnStudentId (String userName) {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("users.csv"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+
+                if (splited[4].equals(userName)) {
+                    Login.getCurrentUser().setID(splited[0]);
+                } else {
+                }
+            }
+        } catch (Exception e) {
+        }
+        return Login.getCurrentUser().getID();
+    }
 }
