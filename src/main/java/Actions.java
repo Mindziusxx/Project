@@ -9,19 +9,20 @@ public class Actions {
                 break;
             case 2:
                 System.out.println("Pridėti kursą");
-                Courses.createCourseByAdmin1 () ;
+                Courses.createCourseByAdmin1();
                 break;
             case 3:
                 System.out.println("Ištrinti kursą");
                 break;
             case 4:
                 System.out.println("Pakeisti kursą");
+                Courses.changeCourseByAdmin();
                 break;
             case 5:
                 Users.searchUser();
                 break;
             case 6:
-                Courses.searchCourse();
+                Courses.searchCourseByStudent();
                 break;
             case 7:
                 System.out.println("Jūs išėjote iš programos");
@@ -50,9 +51,11 @@ public class Actions {
                 break;
             case 5:
                 System.out.println("Pakeisti kursą");
+                Courses.changeCourseByLecturer ();
                 break;
             case 6:
                 System.out.println("Priskirti kursai: ");
+                Courses.searchCourseByLecturer();
                 break;
             case 7:
                 System.out.println("Studentai užsiregisntravę į kursus");
@@ -76,7 +79,7 @@ public class Actions {
                 Users.changeUserInfo();
                 break;
             case 3:
-                Courses.searchCourse();
+                Courses.searchCourseByStudent();
                 break;
             case 4:
                 System.out.println("Užsiregistruotų kursų sąrašas");

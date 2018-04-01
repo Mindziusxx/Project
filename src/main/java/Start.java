@@ -18,6 +18,7 @@ public class Start {
         }
     }
 
+
     public static void startProgram1() {
 
         BufferedReader in = null;
@@ -33,6 +34,21 @@ public class Start {
         }
     }
 
+    public static void startProgram2() {
+
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader("student in course.csv"));
+            String read = null;
+            if ((read = in.readLine()) == null) {
+                createFile2();
+            } else {
+            }
+        } catch (Exception e) {
+            System.out.println("login" + e);
+        }
+
+    }
 
     public static void createFile() {
 
@@ -57,6 +73,8 @@ public class Start {
         } catch (Exception e) {
             System.out.println("createFile" + e);
         }
+        startProgram1();
+        startProgram2();
     }
 
     public static void createFile1() {
@@ -65,6 +83,18 @@ public class Start {
         ) {
 
             bufferedWriter.write("code,lecturerId, userName,tittle,desciption,startDate,credit");
+
+        } catch (Exception e) {
+            System.out.println("createFile" + e);
+        }
+    }
+
+    public static void createFile2() {
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("student in course.csv"))
+        ) {
+
+            bufferedWriter.write("ID,lecturerId,tittle");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);
