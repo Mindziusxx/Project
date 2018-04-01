@@ -230,7 +230,7 @@ public class Courses {
         }
     }
 
-    public static void changeCourseByLecturer () {
+    public static void changeCourseByLecturer() {
         List<String> userStgrings = new ArrayList<>();
         File usersFile = new File("course list.csv");
         try (
@@ -289,39 +289,30 @@ public class Courses {
 
 
     public static void userRegistrationInCourse() {
-        /// REIKIA PADARYTI!!!
         Courses courses = new Courses();
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("student in course.csv", true))
         ) {
-//
             System.out.println("Kur nori regintis? Įvesk TITTLE:");
             courses.setTittle(ScannerUtils.scanner());
 
             System.out.println("Pas kokį destitoją?");
             String UserName = ScannerUtils.scanner();
 
-
             String a = returnStudentId(Login.getCurrentUser().getUserName());
             String b = returnLecturerId(UserName);
             String c = courses.getTittle();
 
+
             bufferedWriter.newLine();
 
-            bufferedWriter.write("ID,lecturerId,tittle");
-
-
-           /// bufferedWriter.write(a+","+b+","+c);
-
-            ///bufferedWriter.write(returnStudentId(Login.getCurrentUser().getUserName()) + ","+ returnLecturerId(UserName) + "," +
-                   /// courses.getTittle());
-
-            System.out.println("Prisireginai!");
-            Menu.otherMenu();
+            bufferedWriter.write(a + "," + b + "," + c);
 
         } catch (Exception e) {
             System.out.println("registerNewUser" + e);
         }
+        System.out.println("Prisireginai!");
+        Menu.otherMenu();
     }
 
     public static void searchStudentCourses() {
@@ -330,10 +321,12 @@ public class Courses {
         ) {
             String read = null;
 
+           String userName = returnStudentId (Login.getCurrentUser().getUserName());
+
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
-                if (splited[0].equals(Login.getCurrentUser().getID())) {
+                if (splited[0].equals (userName)) {
 
                     System.out.println(splited[2]);
                 }
@@ -359,7 +352,7 @@ public class Courses {
     }
 
 
-    public static String returnLecturerId (String userName) {
+    public static String returnLecturerId(String userName) {
         Courses courses = new Courses();
 
         try (
@@ -380,7 +373,7 @@ public class Courses {
         return courses.getLecturerId();
     }
 
-    public static String returnStudentId (String userName) {
+    public static String returnStudentId(String userName) {
         try (
                 BufferedReader in = new BufferedReader(new FileReader("users.csv"))
         ) {
