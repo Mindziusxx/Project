@@ -11,8 +11,7 @@ public class Menu {
         System.out.println("5. Visų studentų sąrašas");
         System.out.println("6. Visų kursų sąrašas");
         System.out.println("7. Exit");
-
-        Actions.menuActionsByAdmin();
+        ActionsForMenu.menuActionsByAdmin();
         adminMenu();
     }
 
@@ -27,11 +26,9 @@ public class Menu {
         System.out.println("6. Priskirti kursai: ");
         System.out.println("7. Studentai užsiregisntravę į kursus");
         System.out.println("8. Exit");
-
-        Actions.menuActionsByLecturer();
+        ActionsForMenu.menuActionsByLecturer();
         lecturerMenu();
     }
-
 
     public static void printMenuForStudent() {
         System.out.println("Pasirinkite norimą punktą: \n");
@@ -42,29 +39,28 @@ public class Menu {
         System.out.println("4. Užsiregistruotų kursų sąrašas");
         System.out.println("5. Užsiregistruoti į kursą");
         System.out.println("6. Exit");
-        Actions.menuActionsByStudent();
-
+        ActionsForMenu.menuActionsByStudent();
     }
 
     public static void adminMenu() {
         System.out.println(" \n Pasirinkite norimą punktą: \n");
         System.out.println("1. Grįžti į Meniu");
         System.out.println("2. Išeiti iš programos");
-        Actions.menuActionsToAdmin();
+        ActionsForMenu.menuActionsToAdmin();
     }
 
     public static void studentMenu() {
         System.out.println(" \n Pasirinkite norimą punktą: \n");
         System.out.println("1. Grįžti į Meniu");
         System.out.println("2. Išeiti iš programos");
-        Actions.menuActionsToStudent();
+        ActionsForMenu.menuActionsToStudent();
     }
 
     public static void lecturerMenu() {
         System.out.println(" \n Pasirinkite norimą punktą: \n");
         System.out.println("1. Grįžti į Meniu");
         System.out.println("2. Išeiti iš programos");
-        Actions.menuActionsToLecturer();
+        ActionsForMenu.menuActionsToLecturer();
     }
 
     public static void otherMenu() {
@@ -72,11 +68,9 @@ public class Menu {
         if (Login.getCurrentUser().getRole().equals("admin")) {
             adminMenu();
         }
-
         if (Login.getCurrentUser().getRole().equals("student")) {
             studentMenu();
         }
-
         if (Login.getCurrentUser().getRole().equals("lecturer")) {
             lecturerMenu();
         }

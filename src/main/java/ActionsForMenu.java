@@ -1,4 +1,4 @@
-public class Actions {
+public class ActionsForMenu {
 
     public static void menuActionsByAdmin() {
 
