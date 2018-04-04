@@ -178,6 +178,12 @@ public class Users {
 
                 if (line.split(",")[4].equals(Login.getCurrentUser().getUserName())) {
 
+
+                    ///Su switch pasidaryti...
+                    ///1. Menu ką norim keisiti ir tada switch.
+                   /// Menu.userMenuChange();
+
+
                     System.out.println("Įveskite naują userName");
                     List<String> splited = Arrays.asList(line.split(","));
                     String uname = ScannerUtils.scanner();
@@ -232,12 +238,6 @@ public class Users {
                     splited.set(11, address);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setAddress(address);
-
-                    System.out.println("Įveskite naują runningCourses");
-                    String rCourses = ScannerUtils.scanner();
-                    splited.set(12, rCourses);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setRunningCourses(rCourses);
                 }
                 userStgrings.add(line);
             }
@@ -320,4 +320,5 @@ public class Users {
             System.out.println("registerNewUser" + e);
         }
     }
-    }
+
+}

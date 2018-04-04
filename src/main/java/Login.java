@@ -10,9 +10,10 @@ public class Login {
         currentUser = new Users();
 
        while (true) {
-           System.out.println("Prašau įveskite username");
+
+           System.out.println("Vartotojas: ");
            currentUser.setUserName(ScannerUtils.scanner());
-           System.out.println("Prašau įveskite password");
+           System.out.println("Slaptažodis: ");
            currentUser.setPassword(ScannerUtils.scanner());
 
         try (
@@ -26,9 +27,8 @@ public class Login {
 
                 String[] splited = read.split(",");
 
-                if (splited[4].equals(currentUser.getUserName())) {
+                if (splited[4].equals(currentUser.getUserName()) && splited[3].equals(currentUser.getPassword()) ) {
 
-                    if (splited[3].equals(currentUser.getPassword())) {
 
                         currentUser.setFirstName(splited[1]);
                         currentUser.setSecondName(splited[2]);
@@ -53,7 +53,6 @@ public class Login {
                         break;
                     } else {
                     }
-                }
             }
             catch (Exception e) {
                 }
@@ -61,6 +60,7 @@ public class Login {
         } catch (Exception e) {
             System.out.println("login" + e);
         }
+           System.out.println("\nNeteisingi prisijungimo duomenys. Bandykite dar kartą!\n");
     }
     }
 

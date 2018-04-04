@@ -5,17 +5,14 @@ public class ActionsForMenu {
         switch (ScannerUtils.scanner1()) {
             case 1:
                 Users.registerNewUser();
-                Menu.otherMenu();
                 break;
             case 2:
-                System.out.println("Pridėti kursą");
                 Courses.createCourseByAdmin1();
                 break;
             case 3:
-                System.out.println("Ištrinti kursą");
+                Courses.deleteLine();
                 break;
             case 4:
-                System.out.println("Pakeisti kursą");
                 Courses.changeCourseByAdmin();
                 break;
             case 5:
@@ -25,7 +22,7 @@ public class ActionsForMenu {
                 Courses.searchCourseByStudent();
                 break;
             case 7:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
             default:
@@ -38,7 +35,6 @@ public class ActionsForMenu {
         switch (ScannerUtils.scanner1()) {
             case 1:
                 Users.userInfo();
-                Menu.otherMenu();
                 break;
             case 2:
                 Users.changeUserInfo();
@@ -47,22 +43,20 @@ public class ActionsForMenu {
                 Courses.createCourseByLecturer1();
                 break;
             case 4:
+                Courses.deleteLine();
                 System.out.println("Ištrinti kursą");
                 break;
             case 5:
-                System.out.println("Pakeisti kursą");
-                Courses.changeCourseByLecturer ();
+                Courses.changeCourseByLecturer();
                 break;
             case 6:
-                System.out.println("Priskirti kursai: ");
                 Courses.searchCourseByLecturer();
                 break;
             case 7:
-                System.out.println("Studentai užsiregisntravę į kursus");
                 Courses.searchAllStudentInCourses();
                 break;
             case 8:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
             default:
@@ -70,7 +64,7 @@ public class ActionsForMenu {
         }
     }
 
-    public static void menuActionsByStudent( ) {
+    public static void menuActionsByStudent() {
 
         switch (ScannerUtils.scanner1()) {
             case 1:
@@ -86,11 +80,10 @@ public class ActionsForMenu {
                 Courses.searchStudentCourses();
                 break;
             case 5:
-                System.out.println("Užsiregistruoti į kursą");
                 Courses.userRegistrationInCourse();
                 break;
             case 6:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
             default:
@@ -104,7 +97,7 @@ public class ActionsForMenu {
                 Menu.printMenuForAdmin();
                 break;
             case 2:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
         }
@@ -116,7 +109,7 @@ public class ActionsForMenu {
                 Menu.printMenuForStudent();
                 break;
             case 2:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
         }
@@ -128,9 +121,24 @@ public class ActionsForMenu {
                 Menu.printMenuForLecturer();
                 break;
             case 2:
-                System.out.println("Jūs išėjote iš programos");
+                System.out.println("Jūs išėjote iš programos!");
                 System.exit(0);
                 break;
         }
     }
+
+//
+//    public static int menuUerChange() {
+//
+//        int number = ScannerUtils.scanner1();
+//        switch (number) {
+//            case 1:
+//                return number;
+//            case 2:
+//                System.out.println("Jūs išėjote iš programos!");
+//                System.exit(0);
+//                break;
+//        }
+//        return number;
+//    }
 }

@@ -1,4 +1,4 @@
 ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-88491a23-e1eb-4e9e-a808-e6aa177291eb,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-5602a3fa-fafb-476a-a27e-c47dbe1f382f,a,a,a,a,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
-b9d4e67f-db30-473e-b660-3cc8de075cb0,asas,asas,a,asasas,lecturer,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+b1763a46-48bd-4f3d-b304-9c1ba60a4dd9,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+2ca58e05-36a6-43f3-8de5-6369974f67e5,Minde,Jonas,a,lektorius1,lecturer,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
+2ca58e05-36a6-43f3-8de5-63699723652,Minde,Jonas,a,studentas,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses
