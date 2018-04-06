@@ -2,21 +2,21 @@ public class ActionsForMenu {
 
     public static void menuActionsByAdmin() {
 
-        switch (ScannerUtils.scanner1()) {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Users.registerNewUser();
                 break;
             case 2:
-                Courses.createCourseByAdmin1();
+                Courses.createCourseByAdmin();
                 break;
             case 3:
-                Courses.deleteLine();
+                Courses.deleteCourseByAdmin();
                 break;
             case 4:
                 Courses.changeCourseByAdmin();
                 break;
             case 5:
-                Users.searchUser();
+                Users.searchAllUsers();
                 break;
             case 6:
                 Courses.searchCourseByStudent();
@@ -32,18 +32,18 @@ public class ActionsForMenu {
 
     public static void menuActionsByLecturer() {
 
-        switch (ScannerUtils.scanner1()) {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Users.userInfo();
+                Users.getUserInformation();
                 break;
             case 2:
                 Users.changeUserInfo();
                 break;
             case 3:
-                Courses.createCourseByLecturer1();
+                Courses.createCourseByLecturer();
                 break;
             case 4:
-                Courses.deleteLine();
+                Courses.deleteCourseByAdmin();
                 System.out.println("Ištrinti kursą");
                 break;
             case 5:
@@ -66,9 +66,9 @@ public class ActionsForMenu {
 
     public static void menuActionsByStudent() {
 
-        switch (ScannerUtils.scanner1()) {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Users.userInfo();
+                Users.getUserInformation();
                 break;
             case 2:
                 Users.changeUserInfo();
@@ -91,10 +91,10 @@ public class ActionsForMenu {
         }
     }
 
-    public static void menuActionsToAdmin() {
-        switch (ScannerUtils.scanner1()) {
+    public static void additionalActionsForAdmin() {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Menu.printMenuForAdmin();
+                Menu.mainMenuForAdmin();
                 break;
             case 2:
                 System.out.println("Jūs išėjote iš programos!");
@@ -103,10 +103,10 @@ public class ActionsForMenu {
         }
     }
 
-    public static void menuActionsToStudent() {
-        switch (ScannerUtils.scanner1()) {
+    public static void additionalActionsForStudent() {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Menu.printMenuForStudent();
+                Menu.mainMenuForStudent();
                 break;
             case 2:
                 System.out.println("Jūs išėjote iš programos!");
@@ -115,10 +115,10 @@ public class ActionsForMenu {
         }
     }
 
-    public static void menuActionsToLecturer() {
-        switch (ScannerUtils.scanner1()) {
+    public static void additionalActionsForLecturer() {
+        switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Menu.printMenuForLecturer();
+                Menu.mainMenuForLecturer();
                 break;
             case 2:
                 System.out.println("Jūs išėjote iš programos!");
@@ -126,19 +126,4 @@ public class ActionsForMenu {
                 break;
         }
     }
-
-//
-//    public static int menuUerChange() {
-//
-//        int number = ScannerUtils.scanner1();
-//        switch (number) {
-//            case 1:
-//                return number;
-//            case 2:
-//                System.out.println("Jūs išėjote iš programos!");
-//                System.exit(0);
-//                break;
-//        }
-//        return number;
-//    }
 }

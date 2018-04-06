@@ -1,11 +1,11 @@
-public enum RoleNew {
+public enum Roles {
     ADMIN("admin"), LECTURER("lecturer"), STUDENT("student");
 
     public String roleName;
     int number;
 
 
-    RoleNew (String number) {
+    Roles(String number) {
         this.roleName = number;
     }
 
@@ -13,9 +13,8 @@ public enum RoleNew {
         return roleName;
     }
 
-    public String setRoleName(String roleName) {
+    public void setRoleName(String roleName) {
         this.roleName = roleName;
-        return roleName;
     }
 
     public void setNumber(int number) {

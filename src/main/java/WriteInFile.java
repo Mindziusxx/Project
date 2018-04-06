@@ -2,10 +2,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.UUID;
 
-public class CreateFile {
+public class WriteInFile {
 
-
-    public static void createFile() {
+    public static void writeInUserFile() {
 
         Users users = new Users();
 
@@ -14,27 +13,25 @@ public class CreateFile {
         users.setPassword("admin");
         users.setUserName("admin");
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("users.csv"))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv"))
         ) {
 
             bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber," +
-                    "dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+                    "dateOfBirth,email,mobileNumber,gender,address");
             bufferedWriter.newLine();
 
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
                     users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," +
-                    "admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
+                    "admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address");
 
         } catch (Exception e) {
             System.out.println("createFile" + e);
         }
-        Start.startProgram1();
-        Start.startProgram2();
     }
 
-    public static void createFile1() {
+    public static void writeInCourseListFile() {
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("course list.csv"))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv"))
         ) {
 
             bufferedWriter.write("code,lecturerId, userName,tittle,desciption,startDate,credit");
@@ -44,11 +41,10 @@ public class CreateFile {
         }
     }
 
-    public static void createFile2() {
+    public static void writeInStudentsInCourseFile() {
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("student in course.csv"))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("studentsInCourseFile.csv"))
         ) {
-
             bufferedWriter.write("ID,lecturerId,tittle");
 
         } catch (Exception e) {

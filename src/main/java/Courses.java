@@ -75,26 +75,26 @@ public class Courses {
     }
 
 
-    public static void createCourseByAdmin1() {
+    public static void createCourseByAdmin() {
         Courses courses = new Courses();
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("course list.csv", true))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv", true))
 
         ) {
 
             ///REIKIA PASIDARYTI TIKRINIMĄ TOKS USERIS EGZISTUOJA...
 
             System.out.println("Įveskite lektoriaus prisijungimo vardą");
-            Login.getCurrentUser().setUserName(ScannerUtils.scanner());
+            Login.getCurrentUser().setUserName(ScannerUtils.scannerForWord());
 
             System.out.println("\nĮveskite kurso pavadinimą: ");
-            courses.setTittle(ScannerUtils.scanner());
+            courses.setTittle(ScannerUtils.scannerForWord());
             System.out.println("\nKurso aprašymą: ");
-            courses.setDesciption(ScannerUtils.scanner());
+            courses.setDesciption(ScannerUtils.scannerForWord());
             System.out.println("\nKurso pradžios data: ");
-            courses.setStartDate(ScannerUtils.scanner());
+            courses.setStartDate(ScannerUtils.scannerForWord());
             System.out.println("\nKreditai: ");
-            courses.setCredit(ScannerUtils.scanner());
+            courses.setCredit(ScannerUtils.scannerForWord());
 
             bufferedWriter.newLine();
             bufferedWriter.write(UUID.randomUUID().toString() + "," + returnLecturerId(Login.getCurrentUser().getUserName()) + "," +
@@ -108,20 +108,20 @@ public class Courses {
 //        System.out.println("Tokio lektoriasu nėra. Bandykite dar kartą!\n");
     }
 
-    public static void createCourseByLecturer1() {
+    public static void createCourseByLecturer() {
         Courses courses = new Courses();
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("course list.csv", true))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv", true))
         ) {
 
             System.out.println("Prašau įveskite tittle");
-            courses.setTittle(ScannerUtils.scanner());
+            courses.setTittle(ScannerUtils.scannerForWord());
             System.out.println("Prašau įveskite desciption");
-            courses.setDesciption(ScannerUtils.scanner());
+            courses.setDesciption(ScannerUtils.scannerForWord());
             System.out.println("Prašau įveskite startDate");
-            courses.setStartDate(ScannerUtils.scanner());
+            courses.setStartDate(ScannerUtils.scannerForWord());
             System.out.println("Prašau įveskite credit");
-            courses.setCredit(ScannerUtils.scanner());
+            courses.setCredit(ScannerUtils.scannerForWord());
 
             bufferedWriter.newLine();
 
@@ -139,7 +139,7 @@ public class Courses {
 
     public static void searchCourseByStudent() {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("course list.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("courseListFile.csv"))
         ) {
             String read = null;
 
@@ -153,7 +153,7 @@ public class Courses {
 
     public static void searchCourseByLecturer() {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("course list.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("courseListFile.csv"))
         ) {
             String read = null;
 
@@ -172,13 +172,13 @@ public class Courses {
 
     public static void changeCourseByAdmin() {
         List<String> userStgrings = new ArrayList<>();
-        File usersFile = new File("course list.csv");
+        File usersFile = new File("courseListFile.csv");
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
 
             System.out.println("Įveskite kurso pavadinimą, kurį norite keisti: ");
-            String course = ScannerUtils.scanner();
+            String course = ScannerUtils.scannerForWord();
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -187,31 +187,31 @@ public class Courses {
 
                     System.out.println("\nPakeisti userName: ");
                     List<String> splited = Arrays.asList(line.split(","));
-                    String uname = ScannerUtils.scanner();
+                    String uname = ScannerUtils.scannerForWord();
                     splited.set(2, uname);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setUserName(uname);
 
                     System.out.println("\nPakeisti kurso pavadinimą: ");
-                    String tittle = ScannerUtils.scanner();
+                    String tittle = ScannerUtils.scannerForWord();
                     splited.set(3, tittle);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(tittle);
 
                     System.out.println("\nPakeisti kurso aprašymą:");
-                    String desciption = ScannerUtils.scanner();
+                    String desciption = ScannerUtils.scannerForWord();
                     splited.set(4, desciption);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(desciption);
 
                     System.out.println("\nPakeisti kurso pradžios datą: ");
-                    String startDate = ScannerUtils.scanner();
+                    String startDate = ScannerUtils.scannerForWord();
                     splited.set(5, startDate);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(startDate);
 
                     System.out.println("\nPakeisti keditų kiekį: ");
-                    String credit = ScannerUtils.scanner();
+                    String credit = ScannerUtils.scannerForWord();
                     splited.set(6, credit);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(credit);
@@ -235,13 +235,13 @@ public class Courses {
 
     public static void changeCourseByLecturer() {
         List<String> userStgrings = new ArrayList<>();
-        File usersFile = new File("course list.csv");
+        File usersFile = new File("courseListFile.csv");
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
 
             System.out.println("Įveskite kurso pavadinimą, kurį norite keisti: ");
-            String course = ScannerUtils.scanner();
+            String course = ScannerUtils.scannerForWord();
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -250,25 +250,25 @@ public class Courses {
 
                     System.out.println("\nPakeisti kurso pavadinimą: ");
                     List<String> splited = Arrays.asList(line.split(","));
-                    String tittle = ScannerUtils.scanner();
+                    String tittle = ScannerUtils.scannerForWord();
                     splited.set(3, tittle);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(tittle);
 
                     System.out.println("\nPakeisti kurso aprašymą:");
-                    String desciption = ScannerUtils.scanner();
+                    String desciption = ScannerUtils.scannerForWord();
                     splited.set(4, desciption);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(desciption);
 
                     System.out.println("\nPakeisti kurso pradžios datą: ");
-                    String startDate = ScannerUtils.scanner();
+                    String startDate = ScannerUtils.scannerForWord();
                     splited.set(5, startDate);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(startDate);
 
                     System.out.println("\nPakeisti keditų kiekį: ");
-                    String credit = ScannerUtils.scanner();
+                    String credit = ScannerUtils.scannerForWord();
                     splited.set(6, credit);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(credit);
@@ -294,18 +294,17 @@ public class Courses {
     public static void userRegistrationInCourse() {
         Courses courses = new Courses();
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("student in course.csv", true))
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("studentsInCourseFile.csv", true))
         ) {
             System.out.println("Kurso pavadinimas: ");
-            courses.setTittle(ScannerUtils.scanner());
+            courses.setTittle(ScannerUtils.scannerForWord());
 
             System.out.println("Dėstytojas: ");
-            String UserName = ScannerUtils.scanner();
+            String UserName = ScannerUtils.scannerForWord();
 
             String a = returnStudentId(Login.getCurrentUser().getUserName());
             String b = returnLecturerId(UserName);
             String c = courses.getTittle();
-
 
             bufferedWriter.newLine();
 
@@ -315,12 +314,12 @@ public class Courses {
             System.out.println("registerNewUser" + e);
         }
         System.out.println("Prisireginai!");
-        Menu.otherMenu();
+        Menu.menuForAllRolesValidation();
     }
 
     public static void searchStudentCourses() {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("student in course.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("studentsInCourseFile.csv"))
         ) {
             String read = null;
 
@@ -340,7 +339,7 @@ public class Courses {
 
     public static void searchAllStudentInCourses() {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("student n course.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("studentsInCourseFile.csv"))
         ) {
             String read = null;
 
@@ -359,7 +358,7 @@ public class Courses {
         Courses courses = new Courses();
 
         try (
-                BufferedReader in = new BufferedReader(new FileReader("users.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
         ) {
             String read = null;
 
@@ -378,7 +377,7 @@ public class Courses {
 
     public static String returnStudentId(String userName) {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("users.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
         ) {
             String read = null;
 
@@ -395,18 +394,18 @@ public class Courses {
         return Login.getCurrentUser().getID();
     }
 
-    public static void deleteLine() {
+    public static void deleteCourseByAdmin() {
 
         List<String> userStgrings = new ArrayList<>();
 
-        File usersFile = new File("course list.csv");
+        File usersFile = new File("courseListFile.csv");
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
             String line;
 
             System.out.println("Įrašykite kurso pavadinimą: \n");
-            String userName = ScannerUtils.scanner();
+            String userName = ScannerUtils.scannerForWord();
 
             while ((line = bufferedReader.readLine()) != null) {
 

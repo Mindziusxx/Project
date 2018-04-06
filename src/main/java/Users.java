@@ -64,34 +64,6 @@ public class Users {
         return role;
     }
 
-    public String getPersonalNumber() {
-        return personalNumber;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getRunningCourses() {
-        return runningCourses;
-    }
-
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -153,9 +125,44 @@ public class Users {
     }
 
 
-    public static void searchUser() {
+    public static void registerNewUser() {
+        Users users = new Users();
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv", true))
+        ) {
+            System.out.println("Įveskite firstName:");
+            users.setFirstName(ScannerUtils.scannerForWord());
+
+            System.out.println("Įveskite secondName:");
+            users.setSecondName(ScannerUtils.scannerForWord());
+
+            System.out.println("Įveskite password:");
+            users.setPassword(ScannerUtils.scannerForWord());
+
+            System.out.println("Įveskite userName:");
+            users.setUserName(ScannerUtils.scannerForWord());
+
+            System.out.println("Įveskite ROLE:");
+            String role = ScannerUtils.scannerForWord();
+
+
+            bufferedWriter.newLine();
+
+            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName()
+                    + "," + users.getPassword() + "," + users.getUserName() + "," + role + "," +
+                    "personalNumber,dateOfBirth,email,mobileNumber,gender,address");
+
+            System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
+
+        } catch (Exception e) {
+            System.out.println("registerNewUser" + e);
+        }
+    }
+
+
+    public static void searchAllUsers() {
         try (
-                BufferedReader in = new BufferedReader(new FileReader("users.csv"))
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
         ) {
             String read = null;
 
@@ -169,7 +176,7 @@ public class Users {
 
     public static void changeUserInfo() {
         List<String> userStgrings = new ArrayList<>();
-        File usersFile = new File("users.csv");
+        File usersFile = new File("usersFile.csv");
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
@@ -180,61 +187,63 @@ public class Users {
 
 
                     ///Su switch pasidaryti...
+
                     ///1. Menu ką norim keisiti ir tada switch.
-                   /// Menu.userMenuChange();
+
+                    ///Menu.userMenuChange();
 
 
-                    System.out.println("Įveskite naują userName");
+                    System.out.println("Įveskite userName");
                     List<String> splited = Arrays.asList(line.split(","));
-                    String uname = ScannerUtils.scanner();
+                    String uname = ScannerUtils.scannerForWord();
                     splited.set(4, uname);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setUserName(uname);
 
-                    System.out.println("Įveskite naują firstName");
-                    String fname = ScannerUtils.scanner();
+                    System.out.println("Įveskite firstName");
+                    String fname = ScannerUtils.scannerForWord();
                     splited.set(1, fname);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setFirstName(fname);
 
-                    System.out.println("Įveskite naują lastName");
-                    String lname = ScannerUtils.scanner();
+                    System.out.println("Įveskite lastName");
+                    String lname = ScannerUtils.scannerForWord();
                     splited.set(2, lname);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setLastName(lname);
 
                     System.out.println("Įveskite naują personalNumber");
-                    String pname = ScannerUtils.scanner();
+                    String pname = ScannerUtils.scannerForWord();
                     splited.set(6, pname);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setPersonalNumber(pname);
 
-                    System.out.println("Įveskite naują dateOfBirth");
-                    String dob = ScannerUtils.scanner();
+                    System.out.println("Įveskite dateOfBirth");
+                    String dob = ScannerUtils.scannerForWord();
                     splited.set(7, dob);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setDateOfBirth(dob);
 
-                    System.out.println("Įveskite naują email");
-                    String email = ScannerUtils.scanner();
+                    System.out.println("Įveskite email");
+                    String email = ScannerUtils.scannerForWord();
                     splited.set(8, email);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setEmail(email);
 
-                    System.out.println("Įveskite naują mobileNumber");
-                    String mNumber = ScannerUtils.scanner();
+                    System.out.println("Įveskite mobileNumber");
+                    String mNumber = ScannerUtils.scannerForWord();
                     splited.set(9, mNumber);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setMobileNumber(mNumber);
 
-                    System.out.println("Įveskite naują gender");
-                    String genter = ScannerUtils.scanner();
+                    System.out.println("Įveskite gender");
+                    String genter = ScannerUtils.scannerForWord();
                     splited.set(10, genter);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setGender(genter);
 
-                    System.out.println("Įveskite naują address");
-                    String address = ScannerUtils.scanner();
+                    System.out.println("Įveskite address");
+                    String address = ScannerUtils.scannerForWord();
                     splited.set(11, address);
                     line = splited.stream().collect(Collectors.joining(","));
                     Login.getCurrentUser().setAddress(address);
@@ -255,18 +264,17 @@ public class Users {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Menu.otherMenu();
+        Menu.menuForAllRolesValidation();
     }
 
-    public static void userInfo() {
+    public static void getUserInformation() {
 
         System.out.println("Jūsų duomenys: \n");
 
         BufferedReader in = null;
 
         try {
-            in = new BufferedReader(new FileReader("users.csv"));
+            in = new BufferedReader(new FileReader("usersFile.csv"));
             String read = null;
 
             while ((read = in.readLine()) != null) {
@@ -281,44 +289,9 @@ public class Users {
                 }
             }
             in.close();
-            Menu.otherMenu();
+            Menu.menuForAllRolesValidation();
         } catch (Exception e) {
             System.out.println("login" + e);
         }
     }
-
-    public static void registerNewUser() {
-        Users users = new Users();
-
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("users.csv", true))
-        ) {
-            System.out.println("Įveskite firstName:");
-            users.setFirstName(ScannerUtils.scanner());
-
-            System.out.println("Įveskite secondName:");
-            users.setSecondName(ScannerUtils.scanner());
-
-            System.out.println("Įveskite password:");
-            users.setPassword(ScannerUtils.scanner());
-
-            System.out.println("Įveskite userName:");
-            users.setUserName(ScannerUtils.scanner());
-
-            System.out.println("Įveskite ROLE:");
-            String role = ScannerUtils.scanner();
-
-            bufferedWriter.newLine();
-
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName()
-                    + "," + users.getPassword() + "," + users.getUserName() + "," + role + ","+
-                    "personalNumber,dateOfBirth,email,mobileNumber,gender,address,runningCourses");
-
-            System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
-
-
-        } catch (Exception e) {
-            System.out.println("registerNewUser" + e);
-        }
-    }
-
 }

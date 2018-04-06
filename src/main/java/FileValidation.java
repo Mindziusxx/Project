@@ -1,15 +1,16 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
-public class Start {
+public class FileValidation {
 
-    public static void startProgram() {
+    public static void usersFileValidation() {
 
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("users.csv"));
+            in = new BufferedReader(new FileReader("usersFile.csv"));
             String read = null;
             if ((read = in.readLine()) == null) {
-                CreateFile.createFile();
+                WriteInFile.writeInUserFile();
             } else {
             }
         } catch (Exception e) {
@@ -17,14 +18,14 @@ public class Start {
         }
     }
 
-    public static void startProgram1() {
+    public static void courseListFileValidation() {
 
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("course list.csv"));
+            in = new BufferedReader(new FileReader("courseListFile.csv"));
             String read = null;
             if ((read = in.readLine()) == null) {
-                CreateFile.createFile1();
+                WriteInFile.writeInCourseListFile();
             } else {
             }
         } catch (Exception e) {
@@ -32,14 +33,14 @@ public class Start {
         }
     }
 
-    public static void startProgram2() {
+    public static void studentsUnCourseFileValidation() {
 
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("student in course.csv"));
+            in = new BufferedReader(new FileReader("studentsInCourseFile.csv"));
             String read = null;
             if ((read = in.readLine()) == null) {
-                CreateFile.createFile2();
+                WriteInFile.writeInStudentsInCourseFile();
             } else {
             }
         } catch (Exception e) {
