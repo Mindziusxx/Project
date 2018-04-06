@@ -29,7 +29,6 @@ public class Login {
 
                         if (splited[4].equals(currentUser.getUserName()) && splited[3].equals(currentUser.getPassword())) {
 
-
                             currentUser.setFirstName(splited[1]);
                             currentUser.setSecondName(splited[2]);
                             currentUser.setRole(splited[5]);
@@ -39,7 +38,6 @@ public class Login {
                             currentUser.setMobileNumber(splited[9]);
                             currentUser.setGender(splited[10]);
                             currentUser.setAddress(splited[11]);
-                            currentUser.setRunningCourses(splited[12]);
 
                             if (currentUser.getRole().equals(Roles.ADMIN.getroleName())) {
                                 Menu.mainMenuForAdmin();

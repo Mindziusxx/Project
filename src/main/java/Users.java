@@ -116,10 +116,6 @@ public class Users {
         this.address = address;
     }
 
-    public void setRunningCourses(String runningCourses) {
-        this.runningCourses = runningCourses;
-    }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -130,29 +126,27 @@ public class Users {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv", true))
         ) {
-            System.out.println("Įveskite firstName:");
+
+            System.out.println("----------------------------");
+            System.out.println("Naujo vartotojo registracija");
+            System.out.println("----------------------------");
+            System.out.println("Vardas:");
             users.setFirstName(ScannerUtils.scannerForWord());
-
-            System.out.println("Įveskite secondName:");
+            System.out.println("Pavardė:");
             users.setSecondName(ScannerUtils.scannerForWord());
-
-            System.out.println("Įveskite password:");
+            System.out.println("Slaptažodis:");
             users.setPassword(ScannerUtils.scannerForWord());
-
-            System.out.println("Įveskite userName:");
+            System.out.println("Vartotojo prisijungimo vardas:");
             users.setUserName(ScannerUtils.scannerForWord());
-
-            System.out.println("Įveskite ROLE:");
+            System.out.println("Vartotojo teisės (student/lecturer):");
             String role = ScannerUtils.scannerForWord();
 
-
             bufferedWriter.newLine();
-
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName()
                     + "," + users.getPassword() + "," + users.getUserName() + "," + role + "," +
                     "personalNumber,dateOfBirth,email,mobileNumber,gender,address");
 
-            System.out.println("Naujas vartotojas sukurtas sėkmingai! \n");
+            System.out.println("\nNaujas vartotojas sukurtas sėkmingai!");
 
         } catch (Exception e) {
             System.out.println("registerNewUser" + e);
@@ -160,15 +154,22 @@ public class Users {
     }
 
 
-    public static void searchAllUsers() {
+    public static void searchAllStudents() {
         try (
                 BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
         ) {
             String read = null;
 
+            int i = 1;
+            System.out.println("-----------------");
+            System.out.println("Studentų sąrašas:");
+            System.out.println("-----------------");
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
-                System.out.println(splited[4]);
+
+                if (splited[5].equals("student")) {
+                    System.out.println((i++) + ". " + splited[4]);
+                }
             }
         } catch (Exception e) {
         }

@@ -81,19 +81,18 @@ public class Courses {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv", true))
 
         ) {
-
-            ///REIKIA PASIDARYTI TIKRINIMĄ TOKS USERIS EGZISTUOJA...
-
-            System.out.println("Įveskite lektoriaus prisijungimo vardą");
+            System.out.println("-------------------");
+            System.out.println("Naujo kurso kūrimas");
+            System.out.println("-------------------");
+            System.out.println("Įveskite lektoriaus prisijungimo vardą:");
             Login.getCurrentUser().setUserName(ScannerUtils.scannerForWord());
-
-            System.out.println("\nĮveskite kurso pavadinimą: ");
+            System.out.println("\nĮveskite kurso pavadinimą:");
             courses.setTittle(ScannerUtils.scannerForWord());
-            System.out.println("\nKurso aprašymą: ");
+            System.out.println("\nĮveskite kurso aprašymą:");
             courses.setDesciption(ScannerUtils.scannerForWord());
-            System.out.println("\nKurso pradžios data: ");
+            System.out.println("\nĮveskite kurso pradžios datą:");
             courses.setStartDate(ScannerUtils.scannerForWord());
-            System.out.println("\nKreditai: ");
+            System.out.println("\nĮveskite kreditus:");
             courses.setCredit(ScannerUtils.scannerForWord());
 
             bufferedWriter.newLine();
@@ -102,10 +101,9 @@ public class Courses {
                     + "," + courses.getStartDate() + "," + courses.getCredit());
 
         } catch (Exception e) {
-            System.out.println("registerNewUser" + e);
+            System.out.println("createCourseByAdmin" + e);
         }
-        System.out.println("Naujas kursas sukurtas sėkmingai! \n");
-//        System.out.println("Tokio lektoriasu nėra. Bandykite dar kartą!\n");
+        System.out.println("\nNaujas kursas sukurtas sėkmingai!");
     }
 
     public static void createCourseByLecturer() {
@@ -136,6 +134,24 @@ public class Courses {
         }
     }
 
+
+    public static void searchAllCourses() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("courseListFile.csv"))
+        ) {
+            String read = null;
+            in.readLine();
+            int i = 1;
+            System.out.println("-----------------");
+            System.out.println("Kursų sąrašas:");
+            System.out.println("-----------------");
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+                System.out.println((i++) + ". " + splited[3]);
+            }
+        } catch (Exception e) {
+        }
+    }
 
     public static void searchCourseByStudent() {
         try (
@@ -177,44 +193,82 @@ public class Courses {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
 
-            System.out.println("Įveskite kurso pavadinimą, kurį norite keisti: ");
+            System.out.println("Įveskite kurso pavadinimą, kurį norite redaguoti: ");
             String course = ScannerUtils.scannerForWord();
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
 
                 if (line.split(",")[3].equals(course)) {
-
-                    System.out.println("\nPakeisti userName: ");
                     List<String> splited = Arrays.asList(line.split(","));
-                    String uname = ScannerUtils.scannerForWord();
-                    splited.set(2, uname);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setUserName(uname);
 
-                    System.out.println("\nPakeisti kurso pavadinimą: ");
-                    String tittle = ScannerUtils.scannerForWord();
-                    splited.set(3, tittle);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setFirstName(tittle);
 
-                    System.out.println("\nPakeisti kurso aprašymą:");
-                    String desciption = ScannerUtils.scannerForWord();
-                    splited.set(4, desciption);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setFirstName(desciption);
+                    System.out.println("--------------------------------");
+                    System.out.println("Norite pakeisti Lektorių? (Y/N)?");
+                    System.out.println("--------------------------------");
+                    String answer1 = ScannerUtils.scannerForWord();
 
-                    System.out.println("\nPakeisti kurso pradžios datą: ");
-                    String startDate = ScannerUtils.scannerForWord();
-                    splited.set(5, startDate);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setFirstName(startDate);
+                    if (answer1.equals("Y") || answer1.equals("y")) {
+                        System.out.println("\nĮveskite naujas lektoriaus vartotojo vardas: ");
+                        String lecturerUserName = ScannerUtils.scannerForWord();
+                        splited.set(2, lecturerUserName);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setUserName(lecturerUserName);
+                    }
 
-                    System.out.println("\nPakeisti keditų kiekį: ");
-                    String credit = ScannerUtils.scannerForWord();
-                    splited.set(6, credit);
-                    line = splited.stream().collect(Collectors.joining(","));
-                    Login.getCurrentUser().setFirstName(credit);
+                    System.out.println("----------------------------------------");
+                    System.out.println("Norite pakeisti kurso pavadinimą? (Y/N)?");
+                    System.out.println("----------------------------------------");
+                    String answer2 = ScannerUtils.scannerForWord();
+
+                    if (answer2.equals("Y") || answer2.equals("y")) {
+                        System.out.println("\nĮrašykite naują kurso pavadinimą:");
+                        String courseName = ScannerUtils.scannerForWord();
+                        splited.set(3, courseName);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setFirstName(courseName);
+                    }
+                    System.out.println("-------------------------------------");
+                    System.out.println("Norite pakeisti kurso aprašymą (Y/N)?");
+                    System.out.println("-------------------------------------");
+                    String answer3 = ScannerUtils.scannerForWord();
+
+                    if (answer3.equals("Y") || answer3.equals("y")) {
+                        System.out.println("\nĮrašykite naują kurso aprašymą:");
+                        String courseDesciption = ScannerUtils.scannerForWord();
+                        splited.set(4, courseDesciption);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setFirstName(courseDesciption);
+                    }
+
+                    System.out.println("-------------------------------------------");
+                    System.out.println("Norite pakeisti kurso pradžios datą? (Y/N)?");
+                    System.out.println("-------------------------------------------");
+
+                    String answer4 = ScannerUtils.scannerForWord();
+
+                    if (answer4.equals("Y") || answer4.equals("y")) {
+
+                        System.out.println("\nĮrašykite naują kurso pradžios datą: ");
+                        String newStartDate = ScannerUtils.scannerForWord();
+                        splited.set(5, newStartDate);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setFirstName(newStartDate);
+                    }
+
+                    System.out.println("---------------------------------------");
+                    System.out.println("Norite pakeisti kreditų skaičių? (Y/N)?");
+                    System.out.println("---------------------------------------");
+
+                    String answer5 = ScannerUtils.scannerForWord();
+
+                    if (answer5.equals("Y") || answer5.equals("y")) {
+                        System.out.println("\nĮrašykite naują kreditų skaičių: ");
+                        String newCredit = ScannerUtils.scannerForWord();
+                        splited.set(6, newCredit);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setFirstName(newCredit);
+                    }
                 }
                 userStgrings.add(line);
             }
@@ -231,6 +285,7 @@ public class Courses {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Kurso duomenys atnaujinti!\n");
     }
 
     public static void changeCourseByLecturer() {
@@ -397,19 +452,20 @@ public class Courses {
     public static void deleteCourseByAdmin() {
 
         List<String> userStgrings = new ArrayList<>();
-
+        Courses courses = new Courses();
         File usersFile = new File("courseListFile.csv");
         try (
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(usersFile));
         ) {
             String line;
-
-            System.out.println("Įrašykite kurso pavadinimą: \n");
-            String userName = ScannerUtils.scannerForWord();
+            searchAllCourses();
+            System.out.println("\nĮrašykite, iš pateikto sąrašo, kursą, kurį norite ištrinti:");
+            String courseName = ScannerUtils.scannerForWord();
+            courses.setTittle(courseName);
 
             while ((line = bufferedReader.readLine()) != null) {
 
-                if (!line.split(",")[3].equals(userName))
+                if (!line.split(",")[3].equals(courseName))
 
                     userStgrings.add(line);
             }
@@ -427,7 +483,6 @@ public class Courses {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("\n" + courses.getTittle() + " kursas ištrintas!");
     }
-
-
 }

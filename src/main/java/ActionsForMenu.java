@@ -16,13 +16,15 @@ public class ActionsForMenu {
                 Courses.changeCourseByAdmin();
                 break;
             case 5:
-                Users.searchAllUsers();
+                Users.searchAllStudents();
                 break;
             case 6:
-                Courses.searchCourseByStudent();
+                Courses.searchAllCourses();
                 break;
             case 7:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
@@ -44,7 +46,6 @@ public class ActionsForMenu {
                 break;
             case 4:
                 Courses.deleteCourseByAdmin();
-                System.out.println("Ištrinti kursą");
                 break;
             case 5:
                 Courses.changeCourseByLecturer();
@@ -56,7 +57,9 @@ public class ActionsForMenu {
                 Courses.searchAllStudentInCourses();
                 break;
             case 8:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
@@ -83,7 +86,9 @@ public class ActionsForMenu {
                 Courses.userRegistrationInCourse();
                 break;
             case 6:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
@@ -97,7 +102,9 @@ public class ActionsForMenu {
                 Menu.mainMenuForAdmin();
                 break;
             case 2:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
         }
@@ -109,7 +116,9 @@ public class ActionsForMenu {
                 Menu.mainMenuForStudent();
                 break;
             case 2:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
         }
@@ -121,7 +130,9 @@ public class ActionsForMenu {
                 Menu.mainMenuForLecturer();
                 break;
             case 2:
+                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
+                System.out.println("-------------------------");
                 System.exit(0);
                 break;
         }

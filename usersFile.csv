@@ -1,2 +1,4 @@
 ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth,email,mobileNumber,gender,address
 3a2c3078-c17b-4200-8941-05043b22f299,admin,admin,admin,admin,admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address
+958da328-c8b1-40c9-a1db-aa3d4f3f9053,Mindaugas,Šimulionis,a,Studentas1,student,personalNumber,dateOfBirth,email,mobileNumber,gender,address
+958da328-c8b1-40c9-a1db-aa3d4f3f9053,Mindaugas,Šimulionis,a,lektorius1,lecturer,personalNumber,dateOfBirth,email,mobileNumber,gender,address
