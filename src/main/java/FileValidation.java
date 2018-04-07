@@ -4,7 +4,6 @@ import java.io.FileReader;
 public class FileValidation {
 
     public static void usersFileValidation() {
-
         BufferedReader in = null;
         try {
             in = new BufferedReader(new FileReader("usersFile.csv"));
@@ -14,7 +13,7 @@ public class FileValidation {
             } else {
             }
         } catch (Exception e) {
-            System.out.println("login" + e);
+            System.out.println("usersFileValidation" + e);
         }
     }
 
@@ -29,7 +28,7 @@ public class FileValidation {
             } else {
             }
         } catch (Exception e) {
-            System.out.println("login" + e);
+            System.out.println("courseListFileValidation" + e);
         }
     }
 
@@ -44,7 +43,7 @@ public class FileValidation {
             } else {
             }
         } catch (Exception e) {
-            System.out.println("login" + e);
+            System.out.println("studentsUnCourseFileValidation" + e);
         }
     }
 }

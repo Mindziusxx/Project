@@ -7,7 +7,6 @@ class StartProgram {
         File usersFile = null;
         File courseListFile = null;
         File studentsInCourseFile = null;
-
         boolean bool = false;
 
         try {
@@ -35,10 +34,7 @@ class StartProgram {
                 studentsInCourseFile.createNewFile();
                 FileValidation.studentsUnCourseFileValidation();
             }
-
         } catch (Exception e) {
-
-            // if any error occurs
             e.printStackTrace();
         }
     }

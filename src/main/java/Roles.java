@@ -4,7 +4,6 @@ public enum Roles {
     public String roleName;
     int number;
 
-
     Roles(String number) {
         this.roleName = number;
     }

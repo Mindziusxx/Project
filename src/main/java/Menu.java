@@ -1,9 +1,9 @@
 public class Menu {
 
     public static void mainMenuForAdmin() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Užregistruoti naują vartotoją");
         System.out.println("2. Pridėti kursą");
         System.out.println("3. Ištrinti kursą");
@@ -16,9 +16,9 @@ public class Menu {
     }
 
     public static void mainMenuForLecturer() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Pažiūrėti savo info");
         System.out.println("2. Keisti savo info");
         System.out.println("3. Pridėti kursą");
@@ -32,9 +32,9 @@ public class Menu {
     }
 
     public static void mainMenuForStudent() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Pažiūrėti savo info");
         System.out.println("2. Keisti savo info");
         System.out.println("3. Visų kursų sąrašas");
@@ -46,34 +46,33 @@ public class Menu {
     }
 
     public static void additionalMenuForAdmin() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
         ActionsForMenu.additionalActionsForAdmin();
     }
 
     public static void additionalMenuForStudent() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
         ActionsForMenu.additionalActionsForStudent();
     }
 
     public static void additionalMenuForLecturer() {
-        System.out.println("------------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
-        System.out.println("------------------------------------");
+        System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
         ActionsForMenu.additionalActionsForLecturer();
     }
 
     public static void menuForAllRolesValidation() {
-
         if (Login.getCurrentUser().getRole().equals("admin")) {
             additionalMenuForAdmin();
         }

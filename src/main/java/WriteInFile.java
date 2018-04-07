@@ -5,27 +5,27 @@ import java.util.UUID;
 public class WriteInFile {
 
     public static void writeInUserFile() {
-
         Users users = new Users();
 
         users.setFirstName("admin");
         users.setSecondName("admin");
         users.setPassword("admin");
         users.setUserName("admin");
+        Roles.ADMIN.setRoleName("admin");
+
+
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv"))
         ) {
-
             bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber," +
                     "dateOfBirth,email,mobileNumber,gender,address");
             bufferedWriter.newLine();
 
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
-                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," +
-                    "admin,personalNumber,dateOfBirth,email,mobileNumber,gender,address");
-
+                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + Roles.ADMIN.getRoleName()+
+                    ",personalNumber,dateOfBirth,email,mobileNumber,gender,address");
         } catch (Exception e) {
-            System.out.println("createFile" + e);
+            System.out.println("writeInUserFile" + e);
         }
     }
 
@@ -35,9 +35,8 @@ public class WriteInFile {
         ) {
 
             bufferedWriter.write("code,lecturerId, userName,tittle,desciption,startDate,credit");
-
         } catch (Exception e) {
-            System.out.println("createFile" + e);
+            System.out.println("writeInCourseListFile" + e);
         }
     }
 
@@ -46,9 +45,8 @@ public class WriteInFile {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("studentsInCourseFile.csv"))
         ) {
             bufferedWriter.write("ID,lecturerId,tittle");
-
         } catch (Exception e) {
-            System.out.println("createFile" + e);
+            System.out.println("writeInStudentsInCourseFile" + e);
         }
     }
 }

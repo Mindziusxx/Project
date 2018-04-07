@@ -1,7 +1,6 @@
 public class ActionsForMenu {
 
     public static void menuActionsByAdmin() {
-
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Users.registerNewUser();
@@ -22,30 +21,29 @@ public class ActionsForMenu {
                 Courses.searchAllCourses();
                 break;
             case 7:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-7");
+                menuActionsByAdmin();
                 break;
         }
     }
 
     public static void menuActionsByLecturer() {
-
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Users.getUserInformation();
                 break;
             case 2:
-                Users.changeUserInfo();
+                Users.changeUserInformation();
                 break;
             case 3:
                 Courses.createCourseByLecturer();
                 break;
             case 4:
-                Courses.deleteCourseByAdmin();
+                Courses.deleteCourseByLecturer();
                 break;
             case 5:
                 Courses.changeCourseByLecturer();
@@ -57,24 +55,23 @@ public class ActionsForMenu {
                 Courses.searchAllStudentInCourses();
                 break;
             case 8:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-8");
+                menuActionsByLecturer();
                 break;
         }
     }
 
     public static void menuActionsByStudent() {
-
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Users.getUserInformation();
                 break;
             case 2:
-                Users.changeUserInfo();
+                Users.changeUserInformation();
                 break;
             case 3:
                 Courses.searchCourseByStudent();
@@ -86,12 +83,12 @@ public class ActionsForMenu {
                 Courses.userRegistrationInCourse();
                 break;
             case 6:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
                 break;
             default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-6");
+                menuActionsByStudent();
                 break;
         }
     }
@@ -102,10 +99,12 @@ public class ActionsForMenu {
                 Menu.mainMenuForAdmin();
                 break;
             case 2:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
+                break;
+            default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-2");
+                additionalActionsForAdmin();
                 break;
         }
     }
@@ -116,11 +115,14 @@ public class ActionsForMenu {
                 Menu.mainMenuForStudent();
                 break;
             case 2:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
                 break;
+            default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-2");
+                additionalActionsForStudent();
+                break;
+
         }
     }
 
@@ -130,10 +132,12 @@ public class ActionsForMenu {
                 Menu.mainMenuForLecturer();
                 break;
             case 2:
-                System.out.println("-------------------------");
                 System.out.println("Jūs išėjote iš programos!");
-                System.out.println("-------------------------");
                 System.exit(0);
+                break;
+            default:
+                System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-2");
+                additionalActionsForLecturer();
                 break;
         }
     }

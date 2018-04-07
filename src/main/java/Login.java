@@ -2,11 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Login {
-
     private static Users currentUser;
 
     public static void login() {
-
         currentUser = new Users();
 
         while (true) {
@@ -28,7 +26,6 @@ public class Login {
                         String[] splited = read.split(",");
 
                         if (splited[4].equals(currentUser.getUserName()) && splited[3].equals(currentUser.getPassword())) {
-
                             currentUser.setFirstName(splited[1]);
                             currentUser.setSecondName(splited[2]);
                             currentUser.setRole(splited[5]);
