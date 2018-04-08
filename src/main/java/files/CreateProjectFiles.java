@@ -1,8 +1,10 @@
+package files;
+
 import java.io.File;
 
-class StartProgram {
+public class CreateProjectFiles {
 
-    public static void start() {
+    public static void createProjectFiles() {
 
         File usersFile = null;
         File courseListFile = null;

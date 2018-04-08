@@ -1,12 +1,19 @@
-public class ActionsForMenu {
+package menu;
+import courses.Courses;
+import courses.CreateCourse;
+import courses.SearchCourse;
+import scanner.ScannerUtils;
+import users.UserActions;
+
+public class MenuActions {
 
     public static void menuActionsByAdmin() {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Users.registerNewUser();
+                UserActions.registerNewUser();
                 break;
             case 2:
-                Courses.createCourseByAdmin();
+                CreateCourse.createCourseByAdmin();
                 break;
             case 3:
                 Courses.deleteCourseByAdmin();
@@ -15,10 +22,10 @@ public class ActionsForMenu {
                 Courses.changeCourseByAdmin();
                 break;
             case 5:
-                Users.searchAllStudents();
+                UserActions.searchAllStudents();
                 break;
             case 6:
-                Courses.searchAllCourses();
+                SearchCourse.searchAllCourses();
                 break;
             case 7:
                 System.out.println("Jūs išėjote iš programos!");
@@ -34,13 +41,13 @@ public class ActionsForMenu {
     public static void menuActionsByLecturer() {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Users.getUserInformation();
+                UserActions.getUserInformation();
                 break;
             case 2:
-                Users.changeUserInformation();
+                UserActions.changeUserInformation();
                 break;
             case 3:
-                Courses.createCourseByLecturer();
+                CreateCourse.createCourseByLecturer();
                 break;
             case 4:
                 Courses.deleteCourseByLecturer();
@@ -49,10 +56,10 @@ public class ActionsForMenu {
                 Courses.changeCourseByLecturer();
                 break;
             case 6:
-                Courses.searchCourseByLecturer();
+                SearchCourse.searchCourseByLecturer();
                 break;
             case 7:
-                Courses.searchAllStudentInCourses();
+                SearchCourse.searchAllStudentInCourses();
                 break;
             case 8:
                 System.out.println("Jūs išėjote iš programos!");
@@ -68,16 +75,16 @@ public class ActionsForMenu {
     public static void menuActionsByStudent() {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                Users.getUserInformation();
+                UserActions.getUserInformation();
                 break;
             case 2:
-                Users.changeUserInformation();
+                UserActions.changeUserInformation();
                 break;
             case 3:
-                Courses.searchCourseByStudent();
+                SearchCourse.searchCourseByStudent();
                 break;
             case 4:
-                Courses.searchStudentCourses();
+                SearchCourse.searchStudentCourses();
                 break;
             case 5:
                 Courses.userRegistrationInCourse();

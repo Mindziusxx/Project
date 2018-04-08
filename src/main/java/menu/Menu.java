@@ -1,3 +1,7 @@
+package menu;
+
+import login.Login;
+
 public class Menu {
 
     public static void mainMenuForAdmin() {
@@ -11,7 +15,7 @@ public class Menu {
         System.out.println("5. Visų studentų sąrašas");
         System.out.println("6. Visų kursų sąrašas");
         System.out.println("7. Baigti darbą");
-        ActionsForMenu.menuActionsByAdmin();
+        MenuActions.menuActionsByAdmin();
         menuForAllRolesValidation();
     }
 
@@ -27,7 +31,7 @@ public class Menu {
         System.out.println("6. Priskirti kursai: ");
         System.out.println("7. Studentai užsiregisntravę į kursus");
         System.out.println("8. Baigti darbą");
-        ActionsForMenu.menuActionsByLecturer();
+        MenuActions.menuActionsByLecturer();
         menuForAllRolesValidation();
     }
 
@@ -41,7 +45,7 @@ public class Menu {
         System.out.println("4. Užsiregistruotų kursų sąrašas");
         System.out.println("5. Užsiregistruoti į kursą");
         System.out.println("6. Baigti darbą");
-        ActionsForMenu.menuActionsByStudent();
+        MenuActions.menuActionsByStudent();
         menuForAllRolesValidation();
     }
 
@@ -51,7 +55,7 @@ public class Menu {
         System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
-        ActionsForMenu.additionalActionsForAdmin();
+        MenuActions.additionalActionsForAdmin();
     }
 
     public static void additionalMenuForStudent() {
@@ -60,7 +64,7 @@ public class Menu {
         System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
-        ActionsForMenu.additionalActionsForStudent();
+        MenuActions.additionalActionsForStudent();
     }
 
     public static void additionalMenuForLecturer() {
@@ -69,7 +73,7 @@ public class Menu {
         System.out.println("----------------------------------");
         System.out.println("1. Grįžti į pagrindinį sąrašą");
         System.out.println("2. Baigti darbą");
-        ActionsForMenu.additionalActionsForLecturer();
+        MenuActions.additionalActionsForLecturer();
     }
 
     public static void menuForAllRolesValidation() {

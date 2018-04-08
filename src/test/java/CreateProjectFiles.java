@@ -2,32 +2,33 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.io.File;
 
-public class StartProgramTest {
+public class CreateProjectFiles {
 
-   private StartProgram startProgram;
+    private CreateProjectFiles createProjectFiles;
 
     @Before
-    public void setUp () {
+    public void setUp() {
         System.out.println("BeforeTest");
-        startProgram = new StartProgram();
+        createProjectFiles = new CreateProjectFiles();
     }
 
     @After
-    public void tearDown (){
+    public void tearDown() {
         System.out.println("AfterTest");
     }
-    
+
     @Test
-    public void testOrUsersFileWasCreated () {
+    public void testOrUsersFileWasCreated() {
         File file = new File("usersFile.csv");
         Assert.assertTrue(file.exists());
         System.out.println("usersFile - yra sukurtas!");
     }
 
     @Test
-    public void testOrCourseListFileWasCreated () {
+    public void testOrCourseListFileWasCreated() {
         File file = new File("courseListFile.csv");
         Assert.assertTrue(file.exists());
         System.out.println("courseListFile - yra sukurtas!");
