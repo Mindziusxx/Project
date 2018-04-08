@@ -1,7 +1,11 @@
 package users;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class Users {
     private String ID, password, firstName, secondName, userName, role, personalNumber, dateOfBirth, email, mobileNumber, gender, address;
+
 
     public String getID() {
         return ID;
@@ -77,5 +81,25 @@ public class Users {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public static void searchAllStudents() {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
+        ) {
+            String read = null;
+            int i = 1;
+            System.out.println("-----------------");
+            System.out.println("Studentų sąrašas:");
+            System.out.println("-----------------");
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+                if (splited[5].equals("student")) {
+                    System.out.println((i++) + ". " + splited[1] + " " + splited[2] + " (" + splited[4] + ")");
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 }

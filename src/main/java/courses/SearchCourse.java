@@ -1,5 +1,7 @@
 package courses;
+
 import login.Login;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -36,8 +38,9 @@ public class SearchCourse {
 
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
-                System.out.println((i++) + ". " + splited[3]);
+                    System.out.println((i++) + ". " + splited[3]);
             }
+
         } catch (Exception e) {
         }
     }
@@ -50,12 +53,13 @@ public class SearchCourse {
             System.out.println("-------");
             System.out.println("Kursai:");
             System.out.println("-------");
+            int i = 1;
 
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
                 if (splited[2].equals(Login.getCurrentUser().getUserName())) {
-                    System.out.println(splited[3]);
+                    System.out.println((i++) + ". " + splited[3]);
                 }
             }
         } catch (Exception e) {
@@ -68,7 +72,7 @@ public class SearchCourse {
         ) {
             String read = null;
             int i = 1;
-            String userNameId = Courses.returnStudentId(Login.getCurrentUser().getUserName());
+            String userNameId = RegisterInCourse.returnStudentId(Login.getCurrentUser().getUserName());
             System.out.println("---------------------");
             System.out.println("Jūsų lankomi kursai:");
             System.out.println("---------------------");
@@ -91,13 +95,37 @@ public class SearchCourse {
             System.out.println("-------------------------");
             System.out.println("Kursą lankantys studentai:");
             System.out.println("-------------------------");
-            while ((read = in.readLine()) != null) {
-                String[] splited = read.split(",");
 
-                if (Courses.returnLecturerId(Login.getCurrentUser().getUserName()).equals(splited[1]))
-                    System.out.println(splited[0] + splited[2]);
+            while ((read = in.readLine()) != null) {
+
+                String[] splited = read.split(",");
+                int i = 1;
+                if (RegisterInCourse.returnLecturerId(Login.getCurrentUser().getUserName()).equals(splited[1])) {
+
+                    test(splited[0]);
+                    System.out.println(Login.getCurrentUser().getFirstName() + " " + Login.getCurrentUser().getSecondName());
+                }
             }
         } catch (Exception e) {
         }
+    }
+
+    public static String test(String studentId) {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
+        ) {
+            String read = null;
+
+            while ((read = in.readLine()) != null) {
+                String[] splited = read.split(",");
+
+                if (splited[0].equals(studentId)) {
+                    Login.getCurrentUser().setFirstName(splited[1]);
+                    Login.getCurrentUser().setSecondName(splited[2]);
+                }
+            }
+        } catch (Exception e) {
+        }
+        return (Login.getCurrentUser().getFirstName() + Login.getCurrentUser().getSecondName());
     }
 }

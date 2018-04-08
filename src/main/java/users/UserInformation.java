@@ -3,67 +3,16 @@ package users;
 import login.Login;
 import menu.Menu;
 import scanner.ScannerUtils;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class UserActions {
+public class UserInformation {
 
-    public static void registerNewUser() {
-        Users users = new Users();
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv", true))
+    public static void changeUserInformation() throws IOException {
 
-        ) {
-            System.out.println("----------------------------");
-            System.out.println("Naujo vartotojo registracija");
-            System.out.println("----------------------------");
-            System.out.println("Vardas:");
-            users.setFirstName(ScannerUtils.scannerForWord());
-            System.out.println("Pavardė:");
-            users.setSecondName(ScannerUtils.scannerForWord());
-            System.out.println("Slaptažodis:");
-            users.setPassword(ScannerUtils.scannerForWord());
-            System.out.println("Vartotojo prisijungimo vardas:");
-            users.setUserName(ScannerUtils.scannerForWord());
-            System.out.println("Vartotojo teisės (student/lecturer):");
-            String role = ScannerUtils.scannerForWord();
-
-            bufferedWriter.newLine();
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," + users.getSecondName()
-                    + "," + users.getPassword() + "," + users.getUserName() + "," + role + "," +
-                    "personalNumber,dateOfBirth,email,mobileNumber,gender,address");
-            System.out.println("\nNaujas vartotojas sukurtas sėkmingai!");
-
-        } catch (Exception e) {
-            System.out.println("registerNewUser" + e);
-        }
-    }
-
-    public static void searchAllStudents() {
-        try (
-                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
-        ) {
-            String read = null;
-            int i = 1;
-            System.out.println("-----------------");
-            System.out.println("Studentų sąrašas:");
-            System.out.println("-----------------");
-
-            while ((read = in.readLine()) != null) {
-                String[] splited = read.split(",");
-                if (splited[5].equals("student")) {
-                    System.out.println((i++) + ". " + splited[4] + " (" + splited[1] + ", " + splited[2] + ")");
-                }
-            }
-        } catch (Exception e) {
-        }
-    }
-
-    public static void changeUserInformation() {
         List<String> userStgrings = new ArrayList<>();
         File usersFile = new File("usersFile.csv");
         try (
@@ -76,7 +25,7 @@ public class UserActions {
                     List<String> splited = Arrays.asList(line.split(","));
 
                     System.out.println("------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti vardą? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti vardą? (Y/N)");
                     System.out.println("------------------------------------");
                     String answer2 = ScannerUtils.scannerForWord();
 
@@ -89,7 +38,7 @@ public class UserActions {
                     }
 
                     System.out.println("--------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti pavardę? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti pavardę? (Y/N)");
                     System.out.println("--------------------------------------");
                     String answer3 = ScannerUtils.scannerForWord();
 
@@ -102,25 +51,25 @@ public class UserActions {
                     }
 
                     System.out.println("--------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti pavardę? (Y/N)?");
+                    System.out.println("Norite pakeisti slaptažodį? (Y/N)");
                     System.out.println("--------------------------------------");
                     String answer4 = ScannerUtils.scannerForWord();
 
                     if (answer4.equals("Y") || answer4.equals("y")) {
-                        System.out.println("\nĮveskite naują pavardę: ");
-                        String lastName = ScannerUtils.scannerForWord();
-                        splited.set(2, lastName);
+                        System.out.println("\nĮveskite naują slaptažodį: ");
+                        String password = ScannerUtils.scannerForWord();
+                        splited.set(3, password);
                         line = splited.stream().collect(Collectors.joining(","));
-                        Login.getCurrentUser().setFirstName(lastName);
+                        Login.getCurrentUser().setFirstName(password);
                     }
 
                     System.out.println("---------------------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti namų telefono numerį? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti namų telefono numerį? (Y/N)");
                     System.out.println("---------------------------------------------------");
                     String answer5 = ScannerUtils.scannerForWord();
 
                     if (answer5.equals("Y") || answer5.equals("y")) {
-                        System.out.println("\nĮveskite naują telefono numerį?: ");
+                        System.out.println("\nĮveskite naują telefono numerį: ");
                         String phoneNumber = ScannerUtils.scannerForWord();
                         splited.set(6, phoneNumber);
                         line = splited.stream().collect(Collectors.joining(","));
@@ -128,7 +77,7 @@ public class UserActions {
                     }
 
                     System.out.println("------------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti gimimo datą? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti gimimo datą? (Y/N)");
                     System.out.println("------------------------------------------");
                     String answer6 = ScannerUtils.scannerForWord();
 
@@ -141,12 +90,12 @@ public class UserActions {
                     }
 
                     System.out.println("-------------------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti elektroninį parašą? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti elektroninį paštą? (Y/N)");
                     System.out.println("-------------------------------------------------");
                     String answer7 = ScannerUtils.scannerForWord();
 
                     if (answer7.equals("Y") || answer7.equals("y")) {
-                        System.out.println("\nĮveskite elektroninį parašą: ");
+                        System.out.println("\nĮveskite elektroninį paštą: ");
                         String email = ScannerUtils.scannerForWord();
                         splited.set(8, email);
                         line = splited.stream().collect(Collectors.joining(","));
@@ -154,7 +103,7 @@ public class UserActions {
                     }
 
                     System.out.println("--------------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti mobilų numerį? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti mobilų numerį? (Y/N)");
                     System.out.println("--------------------------------------------");
                     String answer8 = ScannerUtils.scannerForWord();
 
@@ -167,7 +116,7 @@ public class UserActions {
                     }
 
                     System.out.println("------------------------------------------");
-                    System.out.println("Norite įvesti/pakeisti savo adresą? (Y/N)?");
+                    System.out.println("Norite įvesti/pakeisti savo adresą? (Y/N)");
                     System.out.println("------------------------------------------");
                     String answer9 = ScannerUtils.scannerForWord();
 
@@ -177,6 +126,19 @@ public class UserActions {
                         splited.set(11, address);
                         line = splited.stream().collect(Collectors.joining(","));
                         Login.getCurrentUser().setFirstName(address);
+                    }
+
+                    System.out.println("------------------------------------------");
+                    System.out.println("Norite įvesti lytį? (Y/N)");
+                    System.out.println("------------------------------------------");
+                    String answer10 = ScannerUtils.scannerForWord();
+
+                    if (answer10.equals("Y") || answer10.equals("y")) {
+                        System.out.println("\nĮveskite lytį (vyr./mot.): ");
+                        String gender = ScannerUtils.scannerForWord();
+                        splited.set(10, gender);
+                        line = splited.stream().collect(Collectors.joining(","));
+                        Login.getCurrentUser().setFirstName(gender);
                     }
                 }
                 userStgrings.add(line);
@@ -198,30 +160,32 @@ public class UserActions {
         Menu.menuForAllRolesValidation();
     }
 
-    public static void getUserInformation() {
+    public static void getUserInformation() throws IOException {
 
         System.out.println("--------------");
         System.out.println("Jūsų duomenys:");
         System.out.println("--------------");
-        BufferedReader in = null;
 
-        try {
-            in = new BufferedReader(new FileReader("usersFile.csv"));
+        try (
+                BufferedReader in = new BufferedReader(new FileReader("usersFile.csv"))
+        ) {
             String read = null;
-
             in.readLine();
+
             while ((read = in.readLine()) != null) {
                 String[] splited = read.split(",");
 
                 if (Login.getCurrentUser().getUserName().equals(splited[4])) {
-                    for (int i = 0; i < splited.length; i++) {
-                        System.out.println(splited[i]);
+                    for (int i = 1; i < splited.length; i++) {
                     }
+                    System.out.println("Vardas: " + splited[1] + "\nPavardė: " + splited[2] + "\nVartotojo vardas: " +
+                            splited[4] + "\nAsmeninis numeris: " + splited[6] + "\nGimimo diena: " + splited[7]
+                            + "\nElektroninis paštas: " + splited[8] + "\nMobilus numeris: " + splited[9] + "\nLytis: "
+                            + splited[10]+ "\nAdresas: " + splited[11]);
                     break;
                 } else {
                 }
             }
-            in.close();
             Menu.menuForAllRolesValidation();
         } catch (Exception e) {
             System.out.println("getUserInformation" + e);

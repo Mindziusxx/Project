@@ -1,10 +1,11 @@
 package menu;
-
 import login.Login;
+
+import java.io.IOException;
 
 public class Menu {
 
-    public static void mainMenuForAdmin() {
+    public static void mainMenuForAdmin() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -19,7 +20,7 @@ public class Menu {
         menuForAllRolesValidation();
     }
 
-    public static void mainMenuForLecturer() {
+    public static void mainMenuForLecturer() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -28,14 +29,14 @@ public class Menu {
         System.out.println("3. Pridėti kursą");
         System.out.println("4. Ištrinti kursą");
         System.out.println("5. Pakeisti kursą");
-        System.out.println("6. Priskirti kursai: ");
+        System.out.println("6. Priskirti kursai");
         System.out.println("7. Studentai užsiregisntravę į kursus");
         System.out.println("8. Baigti darbą");
         MenuActions.menuActionsByLecturer();
         menuForAllRolesValidation();
     }
 
-    public static void mainMenuForStudent() {
+    public static void mainMenuForStudent() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -49,7 +50,7 @@ public class Menu {
         menuForAllRolesValidation();
     }
 
-    public static void additionalMenuForAdmin() {
+    public static void additionalMenuForAdmin() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -58,7 +59,7 @@ public class Menu {
         MenuActions.additionalActionsForAdmin();
     }
 
-    public static void additionalMenuForStudent() {
+    public static void additionalMenuForStudent() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -67,7 +68,7 @@ public class Menu {
         MenuActions.additionalActionsForStudent();
     }
 
-    public static void additionalMenuForLecturer() {
+    public static void additionalMenuForLecturer() throws IOException {
         System.out.println("\n----------------------------------");
         System.out.println("Išsirinkite pageidaujamą punktą:");
         System.out.println("----------------------------------");
@@ -76,7 +77,7 @@ public class Menu {
         MenuActions.additionalActionsForLecturer();
     }
 
-    public static void menuForAllRolesValidation() {
+    public static void menuForAllRolesValidation() throws IOException {
         if (Login.getCurrentUser().getRole().equals("admin")) {
             additionalMenuForAdmin();
         }

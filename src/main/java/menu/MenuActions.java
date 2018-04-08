@@ -1,28 +1,31 @@
 package menu;
-import courses.Courses;
-import courses.CreateCourse;
-import courses.SearchCourse;
+
+import courses.*;
 import scanner.ScannerUtils;
-import users.UserActions;
+import users.UserInformation;
+import users.UserRegistration;
+import users.Users;
+
+import java.io.IOException;
 
 public class MenuActions {
 
     public static void menuActionsByAdmin() {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                UserActions.registerNewUser();
+                UserRegistration.registerNewUser();
                 break;
             case 2:
                 CreateCourse.createCourseByAdmin();
                 break;
             case 3:
-                Courses.deleteCourseByAdmin();
+                DeleteCourse.deleteCourseByAdmin();
                 break;
             case 4:
-                Courses.changeCourseByAdmin();
+                ChangeCourse.changeCourseByAdmin();
                 break;
             case 5:
-                UserActions.searchAllStudents();
+                Users.searchAllStudents();
                 break;
             case 6:
                 SearchCourse.searchAllCourses();
@@ -38,22 +41,22 @@ public class MenuActions {
         }
     }
 
-    public static void menuActionsByLecturer() {
+    public static void menuActionsByLecturer() throws IOException {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                UserActions.getUserInformation();
+                UserInformation.getUserInformation();
                 break;
             case 2:
-                UserActions.changeUserInformation();
+                UserInformation.changeUserInformation();
                 break;
             case 3:
                 CreateCourse.createCourseByLecturer();
                 break;
             case 4:
-                Courses.deleteCourseByLecturer();
+                DeleteCourse.deleteCourseByLecturer();
                 break;
             case 5:
-                Courses.changeCourseByLecturer();
+                ChangeCourse.changeCourseByLecturer();
                 break;
             case 6:
                 SearchCourse.searchCourseByLecturer();
@@ -72,13 +75,13 @@ public class MenuActions {
         }
     }
 
-    public static void menuActionsByStudent() {
+    public static void menuActionsByStudent() throws IOException {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
-                UserActions.getUserInformation();
+                UserInformation.getUserInformation();
                 break;
             case 2:
-                UserActions.changeUserInformation();
+                UserInformation.changeUserInformation();
                 break;
             case 3:
                 SearchCourse.searchCourseByStudent();
@@ -87,7 +90,7 @@ public class MenuActions {
                 SearchCourse.searchStudentCourses();
                 break;
             case 5:
-                Courses.userRegistrationInCourse();
+                RegisterInCourse.userRegistrationInCourse();
                 break;
             case 6:
                 System.out.println("Jūs išėjote iš programos!");
@@ -100,7 +103,7 @@ public class MenuActions {
         }
     }
 
-    public static void additionalActionsForAdmin() {
+    public static void additionalActionsForAdmin() throws IOException {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Menu.mainMenuForAdmin();
@@ -116,7 +119,7 @@ public class MenuActions {
         }
     }
 
-    public static void additionalActionsForStudent() {
+    public static void additionalActionsForStudent() throws IOException {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Menu.mainMenuForStudent();
@@ -129,11 +132,10 @@ public class MenuActions {
                 System.out.println("Tokios pasirinkimo nėra, rinkitės punktą tarp 1-2");
                 additionalActionsForStudent();
                 break;
-
         }
     }
 
-    public static void additionalActionsForLecturer() {
+    public static void additionalActionsForLecturer() throws IOException {
         switch (ScannerUtils.scannerForNumber()) {
             case 1:
                 Menu.mainMenuForLecturer();

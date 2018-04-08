@@ -14,9 +14,9 @@ public class CreateCourse {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv", true))
 
         ) {
-            System.out.println("-------------------");
+            System.out.println("------------------------");
             System.out.println("Naujo kurso registracija");
-            System.out.println("-------------------");
+            System.out.println("------------------------");
             System.out.println("Įveskite lektoriaus prisijungimo vardą:");
             Login.getCurrentUser().setUserName(ScannerUtils.scannerForWord());
             System.out.println("\nĮveskite kurso pavadinimą:");
@@ -29,7 +29,7 @@ public class CreateCourse {
             courses.setCredit(ScannerUtils.scannerForWord());
 
             bufferedWriter.newLine();
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + Courses.returnLecturerId(Login.getCurrentUser().getUserName()) + "," +
+            bufferedWriter.write(UUID.randomUUID().toString() + "," + RegisterInCourse.returnLecturerId(Login.getCurrentUser().getUserName()) + "," +
                     Login.getCurrentUser().getUserName() + "," + courses.getTittle() + "," + courses.getDesciption()
                     + "," + courses.getStartDate() + "," + courses.getCredit());
 
@@ -58,7 +58,7 @@ public class CreateCourse {
             courses.setCredit(ScannerUtils.scannerForWord());
 
             bufferedWriter.newLine();
-            bufferedWriter.write(UUID.randomUUID().toString() + "," + Courses.returnLecturerId(Login.getCurrentUser().getUserName()) + "," +
+            bufferedWriter.write(UUID.randomUUID().toString() + "," + RegisterInCourse.returnLecturerId(Login.getCurrentUser().getUserName()) + "," +
                     Login.getCurrentUser().getUserName() + "," + courses.getTittle() + "," + courses.getDesciption()
                     + "," + courses.getStartDate() + "," + courses.getCredit());
 

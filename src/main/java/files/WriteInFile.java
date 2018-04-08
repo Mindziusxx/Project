@@ -1,8 +1,6 @@
 package files;
-
 import roles.Roles;
 import users.Users;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.UUID;
@@ -20,13 +18,13 @@ public class WriteInFile {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("usersFile.csv"))
         ) {
-            bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber," +
-                    "dateOfBirth,email,mobileNumber,gender,address");
+            bufferedWriter.write("ID,firstName,secondName,password,userName,role,personalNumber,dateOfBirth," +
+                    "email,mobileNumber,gender,address");
             bufferedWriter.newLine();
 
             bufferedWriter.write(UUID.randomUUID().toString() + "," + users.getFirstName() + "," +
-                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," + Roles.ADMIN.getRoleName() +
-                    ",personalNumber,dateOfBirth,email,mobileNumber,gender,address");
+                    users.getSecondName() + "," + users.getPassword() + "," + users.getUserName() + "," +
+                    Roles.ADMIN.getRoleName() + ",personalNumber,dateOfBirth,email,mobileNumber,gender,address");
         } catch (Exception e) {
             System.out.println("writeInUserFile" + e);
         }
@@ -37,7 +35,7 @@ public class WriteInFile {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("courseListFile.csv"))
         ) {
 
-            bufferedWriter.write("code,lecturerId, userName,tittle,desciption,startDate,credit");
+            bufferedWriter.write("code,lecturerId,userName,tittle,desciption,startDate,credit");
         } catch (Exception e) {
             System.out.println("writeInCourseListFile" + e);
         }
